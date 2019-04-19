@@ -1,0 +1,130 @@
+<div class="page-heading">
+  <h1 class="page-title">View Announcement</h1>
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+          <a href="index.html"><i class="la la-home font-20"></i></a>
+      </li>
+  </ol>
+</div>
+<div class="page-content fade-in-up">
+  <div class="ibox">
+      <div class="ibox-head">
+          <div class="ibox-title">List Of Announcements</div>
+    
+         </div>
+      <div class="ibox-body">
+        <div class="form-group form-inline">
+          <a routerLink="/add-announcement">
+          <img src ="../../../../assets/img/Announcements.PNG">
+          <label>Add Announcement</label></a>
+        </div>
+        <br><br>
+          <table class="table table-striped table-bordered table-hover table-responsive"  id="example-table" cellspacing="0" width="100%">
+                  <thead>
+                      <tr>
+                          <th></th>
+                          <th>Announcement Name</th>
+                          <th>Created By</th>
+                          <th>Latest Update</th>
+                          <th colspan="3" style="text-align: center">Action</th>
+                          
+                      </tr>
+                      <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                        <th>View Details</th>
+                      </tr>
+                  </thead>
+
+                  <tbody>
+                   <!-- *ngFor="let enrolled of enrolledDataList;let i of enrolledDataList.index "> -->
+
+                      <!-- <tr>
+                          <td><input type="checkbox"> {{ enrolled.id }} </td>
+                              <td> {{ enrolled.userName }} </td>
+                              <td> {{ enrolled.firstName }}</td>
+                              <td>{{ enrolled.lastName }} </td> 
+                              <td>{{ enrolled.email }} </td>
+                              <td>{{ enrolled.country }} </td>
+                             <td>
+                              <button type="button" (click)="onEnrollUser(enrolled.id-1)" ><a >Cancel Enrollment</a></button>
+                              </td> -->
+                   
+                   <!-- <   <tbody *ngFor="let course of Coursesd"> -->
+
+                              <!-- <tr>
+                                      <td> {{ course.code }} </td>
+                                      <td> {{ course.name }}</td>
+                                      <td>{{ course.deliveryMethod }} </td> 
+                                      <td>{{ course.major }} </td>
+                                      <td>{{ course.status }} </td>
+                                     <td>
+                                      <button type="button"><a [routerLink]="['/edit-Course', course.id]"><i class="ti-user"></i></a></button>
+                                      <button type="button" ><a [routerLink]="['/delete-Courses', course.id]" style="color:lightseagreen" ><i class="ti-trash"></i></a> </button> 
+                                      <button type="button" ><a routerLink="/course-details" style="color:lightseagreen" ><i class="ti-list"></i></a> </button> --> 
+
+
+                                      <!-- <button type="button" data-toggle="tooltip" data-placement="bottom" title="Delete details" > <a style="color:lightseagreen" class="small3" data-toggle="modal" data-target=".bd-example-modal-xl"><i class="ti-list"></i></a> </button> 
+                                          <form >
+                                              <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                                                  <div class="modal-dialog modal-xl">
+                                                      <div class="modal-content">
+                                                          <div class="modal-header">
+                                                              <h5 class="modal-title" id="exampleModalLabel">Delete Comformation</h5>
+                                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                      <span aria-hidden="true">&times;</span>
+                                                                  </button>
+                                                          </div>
+                                                              <div class="modal-body">
+                                                                  Are You sure You want You Delete?
+                                                              </div>
+                                                              <div class="modal-footer">
+                                                              <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onDeleteRecipe(server.id)">Yes</button>
+                                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                                              </div>
+                                                      </div>
+                                                  </div>
+                                              </div>   
+                                          </form>                        -->
+                                  <!--   </td>
+                                  </tr> -->
+ <!-- <tbody> -->
+                                  <tr>
+                                    <td></td>
+                                    <td> Hadoop</td>
+                                    <td>Pooja</td>
+                                    <td>March 20,2019 AT 12:20 PM</td>
+                                    <td align="center"><button ><a routerLink="/edit-announcement"><i class="ti-pencil-alt"></i></a></button></td>
+                                    <td align="center"><button ><a routerLink="/delete-announcement"><i class="ti-trash"></i></a></button></td>
+                                    <td align="center"><button ><a routerLink="/view-announcement-detail"><i class="ti-list"></i></a></button></td>
+                                  </tr>
+                                  <tr>
+                                    <td></td>
+                                    <td> Big Data</td>
+                                    <td>Roopa</td>
+                                    <td>March 21,2019 AT 12:10 PM</td>
+                                    <td align="center"><button ><a routerLink="/edit-announcement"><i class="ti-pencil-alt"></i></a></button></td>
+                                    <td align="center"><button ><a routerLink="/delete-announcement"><i class="ti-trash"></i></a></button></td>
+                                    <td align="center"><button ><a routerLink="/view-announcement-detail"><i class="ti-list"></i></a></button></td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td> Networking</td>
+                                      <td>Nidhi</td>
+                                      <td>March 21,2019 AT 12:21 PM</td>
+                                      <td align="center"><button ><a routerLink="/edit-announcement"><i class="ti-pencil-alt"></i></a></button></td>
+                                      <td align="center"><button ><a routerLink="/delete-announcement"><i class="ti-trash"></i></a></button></td>
+                                      <td align="center"><button ><a routerLink="/view-announcement-detail"><i class="ti-list"></i></a></button></td>
+                                    </tr>
+              </tbody>
+              </table>
+      </div>
+  </div>
+</div>
+
+             
+     

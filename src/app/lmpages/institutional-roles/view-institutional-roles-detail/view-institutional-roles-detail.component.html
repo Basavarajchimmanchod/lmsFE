@@ -1,0 +1,89 @@
+<div class="page-heading">
+  <h1 class="page-title">View Institutional Roles</h1>
+ 
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+          <a href="index.html"><i class="la la-home font-20"></i></a>
+      </li>
+  </ol>
+</div>
+
+<div >
+    <form [formGroup]="institutionalRolesForm" (ngSubmit)="onSubmit(institutionalRolesForm)">
+    <div class="col-md-6" width="auto">
+        <div class="ibox">
+           <!-- <div class="ibox-head">
+                  
+              
+          </div> -->
+        
+          <div class="ibox-body" > 
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label small">Language : </label> 
+            <div class="col-sm-8">
+              
+                <input class="form-control" id="language" formControlName="language" disabled>
+                    
+                </div>
+          </div>
+
+          <div class="form-group row">
+              <label class="col-sm-4 col-form-label small"> Owner Organizations :</label>
+              <div class="col-sm-8 ">
+                <table>
+                    <tr *ngFor="let organization of organizations" style="margin-bottom:10px">
+                            <td >
+                                    <!-- <input type="text" id="ownerOrganization" name="ownerOrganization" placeholder="{{organization.orgName}}" disabled ngModel> -->
+  
+                                    <label class="col-sm-4 col-form-label" id="organizations" Name="organizations">{{ organization.orgName }} </label>
+  
+                                   </td> 
+                                   
+                    </tr>
+                </table> 
+                    </div>
+            </div>
+
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label small">* Role Id : </label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" required id="code" formControlName="code" disabled >
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label small" >* Role Name : </label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" required id="name" formControlName="name" disabled>
+
+            </div>
+        </div>
+          
+            <div class="form-group row" >
+                    <label class="col-sm-4 col-form-label small">* Effective Date : (DD/MM/YYYY)</label>
+                    <div class="col-sm-8">
+                        <div class="form-group date">
+                            <input class="form-control" type="date"  id="effectiveDate" formControlName="effectiveDate" disabled>
+                    </div>
+                </div>
+                </div>
+
+                <div class="form-group row" >
+                        <label class="col-sm-4 col-form-label small">* End Date : (DD/MM/YYYY)</label>
+                        <div class="col-sm-8">
+                            <div class="form-group date">
+                                <input class="form-control" type="date"  id="endDate" formControlName="endDate" disabled>
+                        </div>
+                    </div>
+                    </div>
+            
+                   
+                  
+        </div>
+        </div>
+    </div>
+
+                              
+</form>
+  </div>

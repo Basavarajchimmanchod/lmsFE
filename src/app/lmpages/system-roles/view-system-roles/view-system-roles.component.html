@@ -1,0 +1,61 @@
+<div class="page-heading">
+    <h1 class="page-title">View System Roles</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html"><i class="la la-home font-20"></i></a>
+        </li>
+    </ol>
+  </div>
+  <div class="page-content fade-in-up">
+    <div class="ibox">
+        <div class="ibox-head">
+            <div class="ibox-title">View System Roles</div>
+        </div>
+        <div class="ibox-body">
+            <table class="table table-striped table-bordered table-hover table-responsive" id="example-table" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                                <th>Role Id</th>
+                                <th>System Role Name</th>
+                                <th>Effective Date </th>
+                                <th> End Date</th>
+                                <th> Organisation </th>
+                                <th> Action </th>
+
+                        </tr>
+                     
+              </thead>
+              <tbody *ngFor="let SystemRoles of Systemrolesd; let i=index">
+  <tr>
+                  <td> {{ SystemRoles.roleId}} </td>
+                  <td>{{ SystemRoles.roleName }}</td>
+                  <td>{{ SystemRoles.effectiveDate }}</td> 
+                  <td>{{ SystemRoles.endDate }}</td>    
+                  <td>
+                        <span *ngFor="let systemRole of SystemRoles.organization"> {{ systemRole.orgName }}<br/> </span>
+  
+                    <!-- {{ SystemRoles.organisation }} -->
+                </td>
+
+                        <!-- <td> {{ Terms.termName }} </td>
+                        <td> {{ Terms.startDate }}</td>"['/edit-discipline', Terms.id]"
+                        <td>{{ Terms.endDate }} </td>  -->
+                       <td>
+                        <button type="button"><a [routerLink]="['/edit-System-Roles',SystemRoles.id]"><i class="ti-pencil-alt"></i></a></button>
+                        <button type="button"><a [routerLink]="['/delete-System-Roles',SystemRoles.id]"><i class="ti-trash"></i></a></button>
+                        <button type="button"><a [routerLink]="['/view-System-Roles-details',SystemRoles.id]"><i class="ti-list"></i></a></button>
+
+                                        
+
+                                        <!-- <button type="button" >-->
+                                          <!--data-toggle="tooltip" data-placement="bottom" title="Delete details" >--> 
+                                          <!-- <a [routerLink]="['/delete-Term', Terms.id]" style="color:lightseagreen" ><i class="ti-list"></i></a> </button>  --> 
+                                      </td>
+                                   
+                </tbody>
+                </table>
+        </div>
+    </div>
+  </div>
+                       
+              

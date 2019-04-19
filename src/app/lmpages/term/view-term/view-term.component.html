@@ -1,0 +1,51 @@
+<div class="page-heading">
+    <h1 class="page-title">View Term</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html"><i class="la la-home font-20"></i></a>
+        </li>
+    </ol>
+  </div>
+  <div class="page-content fade-in-up">
+    <div class="ibox">
+        <div class="ibox-head">
+            <div class="ibox-title">View Term</div>
+        </div>
+        <div class="ibox-body">
+            <table class="table table-striped table-bordered table-hover table-responsive" id="example-table" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                                <th rowcol="2">Term Name</th>
+                                <th colspan="2" style="text-align: center">Duration</th>
+                                <th rowcol="2"> Action </th>
+
+                        </tr>
+                      <tr>
+                          <th></th>
+                      <th>Start Date</th>
+                      <th>End Date</th>
+                      <th></th>
+                  </tr>
+              </thead>
+                        <tbody *ngFor="let Terms of termsd; let i=index">
+  
+                                <tr>
+                                        <td> {{ Terms.termName }} </td>
+                                        <td> {{ Terms.startDate }}</td>
+                                        <td>{{ Terms.endDate }} </td> 
+                                       <td>
+                                        <button type="button"><a [routerLink]="['/edit-Term', Terms.id]"><i class="ti-pencil-alt"></i></a></button>
+                                        <button type="button" ><!--data-toggle="tooltip" data-placement="bottom" title="Delete details" >--> <a [routerLink]="['/delete-Term', Terms.id]" style="color:lightseagreen" ><i class="ti-trash"></i></a> </button> 
+                                        <button type="button"><a [routerLink]="['/view-Term-details', Terms.id]"><i class="ti-list"></i></a></button>
+
+                                
+                                      </td>
+                                    </tr>
+  
+                </tbody>
+                </table>
+        </div>
+    </div>
+  </div>
+                       
+              

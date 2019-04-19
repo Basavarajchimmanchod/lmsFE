@@ -1,0 +1,186 @@
+<div class="page-heading">
+  <h1 class="page-title">Add Organizations</h1>
+ <p style="font-size: 11px">You can add a new organization by filling in the appropriate information below. When you are finished, click Submit. An asterisk [*] indicates a required field.</p>
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+          <a href="index.html"><i class="la la-home font-20"></i></a>
+      </li>
+  </ol>
+</div>
+
+<div >
+    <form #organizationForm="ngForm" (ngSubmit)="onSubmit(organizationForm)">
+    <div class="col-md-6" width="auto">
+        <div class="ibox">
+           <div class="ibox-head">
+            <div class="ibox-title">General Information</div>
+            <div class="ibox-tools">
+                <a class="ibox-collapse" data-widget="collapse" ><i class="fa fa-minus"></i></a>
+              <!--  <a class="fullscreen-link"><i class="fa fa-expand"></i></a> -->
+            </div>
+              
+          </div> 
+        
+          <div class="ibox-body" > 
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label small">Language : </label> 
+            <div class="col-sm-8">
+              
+                <select class="form-control" id="languagev" name="language" ngModel>
+                    <option *ngFor="let langs of languages" [value]="langs">{{ langs }}</option>
+                </select>
+                </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label small"> *Organization Code :</label>
+            <div class="col-sm-8">
+              <input class="form-control" type="text" required id="orgCode" name="orgCode"  [ngModel]="organizationVaild.orgCode" required minlength="2" maxlength="6" pattern="^[a-zA-Z0-9-_.]*" #dcode="ngModel">
+              <!-- <span *ngIf="DisciplineForm.controls['name'].invalid && (DisciplineForm.controls['name'].dirty || DisciplineForm.controls['name'].touched)">
+                Please Enter Name</span> -->
+                <!-- <span *ngIf="DisciplineForm.control['name'].minlength">Please Enter Only 5 Charaters</span> -->
+ 
+                <div *ngIf="dcode.errors && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                      <div *ngIf="(dcode.dirty || dcode.touched) && dcode.errors.required"> 
+                        Organization code required.
+                      </div>						
+                      <div *ngIf="dcode.errors.pattern"> 
+                        Organization code Should Contains Only characters And Numbers.
+            </div>	
+            <div *ngIf="dcode.errors.minlength"> 
+                Organization code must be at least 2 characters long..
+              </div>
+              <div *ngIf="dcode.errors.maxlength"> 
+                Organization code should be only 6 characters long..
+                </div>
+                  </div>  
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label small">* Organization Name : </label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" required id="orgName" name="orgName" [ngModel]="organizationVaild.orgName" required minlength="3" maxlength="100" pattern="^[a-zA-Z0-9]*" #dname="ngModel">
+                <!-- <span *ngIf="DisciplineForm.controls['name'].invalid && (DisciplineForm.controls['name'].dirty || DisciplineForm.controls['name'].touched)">
+                  Please Enter Name</span> -->
+                  <!-- <span *ngIf="DisciplineForm.control['name'].minlength">Please Enter Only 5 Charaters</span> -->
+   
+                  <div *ngIf="dname.errors && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                        <div *ngIf="(dname.dirty || dname.touched) && dname.errors.required"> 
+                            Organization Name required.
+                        </div>						
+                        <div *ngIf="dname.errors.pattern"> 
+                            Organization Name Should Contains Only characters And Numbers.
+              </div>	
+              <div *ngIf="dname.errors.minlength"> 
+                Organization Name must be at least 3 characters long..
+                </div>
+                <div *ngIf="dname.errors.maxlength"> 
+                    Organization Name should be only 6 characters long..
+                  </div>
+                    </div>  
+            </div>
+        </div>
+
+         <div class="form-group row" >
+                    <label class="col-sm-4 col-form-label small">* Effective Date : (DD/MM/YYYY)</label>
+                    <div class="col-sm-8">
+                        <div class="form-group date">
+                            <input class="form-control" type="date"  id="startDate" name="startDate" ngModel>
+                    </div>
+                </div>
+                </div>
+
+                <div class="form-group row" >
+                        <label class="col-sm-4 col-form-label small">* End Date : (DD/MM/YYYY)</label>
+                        <div class="col-sm-8">
+                            <div class="form-group date">
+                                <input class="form-control" type="date"  id="endDate" name="endDate" ngModel>
+                        </div>
+                    </div>
+                    </div>
+            
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label small">* Type :</label>
+                    <div class="col-sm-8">
+              
+                      <select class="form-control" id="type" name="type" ngModel>
+                          <option *ngFor="let types of type" [value]="types">{{ types }}</option>
+                      </select>
+                      </div>                  
+                    </div>
+
+                 
+                   
+        </div>
+
+
+        </div>
+    </div>
+ <div class="col-md-6" width="auto">
+             
+          <div class="ibox">
+            <div class="ibox-head">
+                <div class="ibox-title">Physical Address </div>
+                <div class="ibox-tools">
+                    <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                </div> 
+            </div>
+            
+            <div class="ibox-body" >
+              <div class="form-group row">
+              <p style="font-size: 11px"> These fields are not required, but if you choose to specify an address, you must fill out all of the fields. Lines 2 and 3 of the street address are always optional.
+                  </p>
+                  </div>
+
+                  <div class="form-group row">
+                      <label class="col-sm-4 col-form-label small">Street :</label>
+                      <div class="col-sm-8">
+                        <textarea class="form-control" rows="3" id="street" name="street" ngModel></textarea>
+                      </div>
+                
+                      </div>
+                         
+                      <div class="form-group row">
+                          <label class="col-sm-4 col-form-label small">City :</label>
+                          <div class="col-sm-8" >
+                             <input class="form-control small2" type="text" id="city" name="city" ngModel>
+                          </div>    
+                        </div>
+
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label small">Country :</label>
+                          <div class="col-sm-8">
+                              <select class="form-control" id="country" name="country" ngModel>
+                                  <option *ngFor="let lang of country" [value]="lang">{{ lang }}</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-sm-4 col-form-label small">State/Province :</label>
+                          <div class="col-sm-8">
+                              <select class="form-control" id="state" name="state" ngModel>
+                                  <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-sm-4 col-form-label small">Postal Code :</label>
+                          <div class="col-sm-8" >
+                             <input class="form-control small2" type="text" id="postalCode" name="postalCode" ngModel>
+                          </div>    
+                        </div> 
+            </div>
+            <div class="form-group row">
+                <div class="form-group row" >
+                    <div class="col-sm-8 ml-sm-auto">
+                        <button class="btn btn-info" type="submit" >Submit</button>
+                    </div>
+                </div>
+        </div>
+          
+          </div>  
+        </div>                
+</form>
+  </div>

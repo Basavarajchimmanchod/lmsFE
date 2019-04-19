@@ -1,0 +1,154 @@
+<div class="page-heading">
+  <h1 class="page-title">View Category</h1>
+  <!--<p style="font-size:10px">
+        Use this form to Add a new resource category. Fill out the required information and click Submit. 
+      </p> -->
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+          <a href="index.html"><i class="la la-home font-20"></i></a>
+      </li>
+     <!-- <li class="breadcrumb-item"></li>  -->
+  </ol>
+</div>
+
+<div >
+      <form [formGroup]="categoriesForm" (ngSubmit)="onSubmit(categoriesForm)">
+
+    <div class="col-md-6" width="auto">
+        <div class="ibox">
+          
+            <div class="ibox-head">
+                  
+              <div class="ibox-title">General Information</div>
+              <div class="ibox-tools">
+                  <a class="ibox-collapse" data-widget="collapse" ><i class="fa fa-minus"></i></a>
+                <!--  <a class="fullscreen-link"><i class="fa fa-expand"></i></a> -->
+              </div>
+          </div>
+          <div class="ibox-body" > 
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label small">Language : </label> 
+            <div class="col-sm-8">
+                <!-- <select class="form-control small1" style="width:50% " id="language" formControlName="language">
+                    <option value="">English</option>
+                    <option value="">Chinese - China</option>
+                    <option value="">English - Australia</option>
+                    <option value="">English - United Kingdom</option>
+                    <option value="">Francais - Canada</option>
+                    <option value="">German - Germany</option>
+                    <option value="">Italian - Italy</option>
+                    <option value="">Portuguese - Brazil</option>
+                    <option value="">Espariol - Mexico</option>
+                </select> -->
+
+                <input class="form-control" id="language" formControlName="language" disabled >
+              </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label small">* LMS :</label>
+            <div class="col-sm-8">
+              <input class="form-control" type="text" id="lms" formControlName="lms" disabled>
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label small">* Name : </label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" id="name" formControlName="name" disabled >
+            </div>
+        </div>
+        
+        <div class="form-group row">
+                <label class="col-sm-4 col-form-label small"> Description :</label>
+                <div class="col-sm-8">
+                  <textarea class="form-control" rows="3" id="description" formControlName="description" disabled></textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                    <label class="col-sm-4 col-form-label small">* Start Date : (MM/DD/YYYY)</label>
+                    <div class="col-sm-8">
+                        <div class="input-group date">
+                            <input class="form-control" type="date" id="startDate" formControlName="startDate" disabled>
+                    </div>
+                </div>
+                </div>
+
+                <div class="form-group row">
+                        <label class="col-sm-4 col-form-label small">End Date : (MM/DD/YYYY)</label>
+                        <div class="col-sm-8">
+                            <div class="input-group date">
+                                <input class="form-control" type="date" id="endDate" formControlName="endDate" disabled>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label small">Searchable  :</label>
+                  <div class="col-sm-8">
+                                  
+                      <div class="radio" *ngFor="let option of isCategorySearchable">
+                          <label >
+                              <input type="radio" formControlName="isCategorySearchable" id="isCategorySearchable" [value]="option" disabled >{{ option }}
+                          </label>      
+                          </div>
+                    </div>
+                    </div>
+
+                    <div class="form-group row ">
+                      <label class="col-sm-4 col-form-label small">Status  :</label>
+                  <div class="col-sm-8 " >
+                                  <div class="radio" *ngFor="let option of status">
+                                <label >
+                                    <input type="radio" formControlName="status" id="status" [value]="option" disabled>{{ option }}
+                                </label>      
+                                </div>
+                    </div>
+                    </div>
+
+        </div>
+        </div>
+        </div>
+        <div class="col-md-6" width="auto">
+                <div class="ibox">
+           
+        <div class="ibox">
+          <div class="ibox-head">
+              <div class="ibox-title">Content </div>
+              <div class="ibox-tools">
+                  <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+              </div> 
+          </div>
+    
+          <div class="ibox-body" >
+            <div class="form-inline">
+                <label></label>
+              <div class="col-sm-8">
+                <table>
+                  <tr *ngFor="let contact of contacts" style="margin-bottom:10px">
+                          <td >
+                                  <!-- <input type="text" id="ownerOrganization" name="ownerOrganization" placeholder="{{organization.orgName}}" disabled ngModel> -->
+
+                                  <label class="col-sm-4 col-form-label" id="contact" Name="contact">{{ contact.contName }} </label>
+
+                                 </td> 
+                                 <td>
+
+                                </td>
+                  </tr>
+              </table> 
+                    <br/>
+            
+                              
+  </div>
+</div>
+          </div>
+
+    </div>
+  </div>
+</div>
+</form>
+
+</div>

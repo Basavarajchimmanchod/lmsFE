@@ -1,0 +1,142 @@
+<div class="page-heading">
+  <h1 class="page-title">View Organization</h1>
+ <!-- <p style="font-size: 11px">You can add a new organization by filling in the appropriate information below. When you are finished, click Submit. An asterisk [*] indicates a required field.</p> -->
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+          <a href="index.html"><i class="la la-home font-20"></i></a>
+      </li>
+  </ol>
+</div>
+
+<div >
+    <form [formGroup]="organizationForm" (ngSubmit)="onSubmit(organizationForm)">
+    <div class="col-md-6" width="auto">
+        <div class="ibox">
+           <div class="ibox-head">
+            <div class="ibox-title">General Information</div>
+            <div class="ibox-tools">
+                <a class="ibox-collapse" data-widget="collapse" ><i class="fa fa-minus"></i></a>
+              <!--  <a class="fullscreen-link"><i class="fa fa-expand"></i></a> -->
+            </div>
+              
+          </div> 
+        
+          <div class="ibox-body" > 
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label small">Language : </label> 
+            <div class="col-sm-8">
+              
+                <input class="form-control" id="languagev" formControlName="language" disabled >
+                </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label small"> *Organization Code :</label>
+            <div class="col-sm-8">
+              <input class="form-control" type="text" required id="orgCode" formControlName="orgCode" disabled >
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label small">* Organization Name : </label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" required id="orgName" formControlName="orgName" disabled >
+            </div>
+        </div>
+
+         <div class="form-group row" >
+                    <label class="col-sm-4 col-form-label small">* Effective Date : (DD/MM/YYYY)</label>
+                    <div class="col-sm-8">
+                        <div class="form-group date">
+                            <input class="form-control" type="date"  id="startDate" formControlName="startDate" disabled>
+                    </div>
+                </div>
+                </div>
+
+                <div class="form-group row" >
+                        <label class="col-sm-4 col-form-label small">* End Date : (DD/MM/YYYY)</label>
+                        <div class="col-sm-8">
+                            <div class="form-group date">
+                                <input class="form-control" type="date"  id="endDate" formControlName="endDate" disabled>
+                        </div>
+                    </div>
+                    </div>
+            
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label small">* Type :</label>
+                    <div class="col-sm-8">
+              
+                      <input class="form-control" id="type" formControlName="type" disabled>
+                      </div>                  
+                    </div>
+
+                    <!-- <div class="form-horizontal">
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">*Primary Contact :</label>
+                            <div class="col-sm-8">
+                                <a routerLinkActive="active" routerLink="/ChooseOrganization" class="small3">Choose a Primary Contact</a>                          </div>
+                        </div>
+                        </div> -->
+                   
+        </div>
+
+
+        </div>
+    </div>
+ <div class="col-md-6" width="auto">
+             
+          <div class="ibox">
+            <div class="ibox-head">
+                <div class="ibox-title">Physical Address </div>
+                <div class="ibox-tools">
+                    <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                </div> 
+            </div>
+            
+            <div class="ibox-body" >
+              <div class="form-group row">
+              <p style="font-size: 11px"> These fields are not required, but if you choose to specify an address, you must fill out all of the fields. Lines 2 and 3 of the street address are always optional.
+                  </p>
+                  </div>
+
+                  <div class="form-group row">
+                      <label class="col-sm-4 col-form-label small">Street :</label>
+                      <div class="col-sm-8" >
+
+                      <textarea class="form-control" id="street" formControlName="street" row="3" disabled></textarea>
+                      </div>
+                  </div>
+                         
+                      <div class="form-group row">
+                          <label class="col-sm-4 col-form-label small">City :</label>
+                          <div class="col-sm-8" >
+                             <input class="form-control small2" type="text" id="city" formControlName="city" disabled>
+                          </div>    
+                        </div>
+
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label small">Country :</label>
+                          <div class="col-sm-8">
+                              <input class="form-control" id="country" formControlName="country" ngModel disabled>
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-sm-4 col-form-label small">State/Province :</label>
+                          <div class="col-sm-8">
+                              <input class="form-control" id="state" formControlName="state" ngModel disabled>
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-sm-4 col-form-label small">Postal Code :</label>
+                          <div class="col-sm-8" >
+                             <input class="form-control small2" type="text" id="postalCode" formControlName="postalCode" disabled>
+                          </div>    
+                        </div> 
+            </div>
+           
+          
+          </div>  
+        </div>                
+</form>
+  </div>

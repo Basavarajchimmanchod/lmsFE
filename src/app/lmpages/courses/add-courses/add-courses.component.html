@@ -1,0 +1,523 @@
+<div class="page-heading">
+  <h1 class="page-title">Add Course</h1>
+  <hr>
+  <p style="font-size: 10px">You can add a new course by filling in the appropriate information below. When you are finished, click Add Course. An asterisk [*] indicates a required field.</p><br>
+
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+          <a href="index.html"><i class="la la-home font-20"></i></a>
+      </li>
+  </ol>
+</div>
+<form #coursesForm="ngForm" (ngSubmit)="onSubmit(coursesForm)">
+  <div class="row">
+      <div class="col-md-6" width="auto">
+          <div class="ibox">
+              <div class="ibox-head">
+                  <div class="ibox-title">General Information</div>
+                  <div class="ibox-tools">
+                      <a class="ibox-collapse" data-widget="collapse" ><i class="fa fa-minus"></i></a>
+                  </div>
+              </div>
+              <div class="ibox-body" >   
+                  <div class="form-horizontal">
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label small"> * Organizations :</label>
+                        <div class="col-sm-8">
+                            <table>
+                                <tr *ngFor="let organization of organizations" style="margin-bottom:10px">
+                                    <td >
+                                        <label class="col-sm-4 col-form-label" id="organizations" Name="organizations">{{ organization.orgName }} </label>
+                                    </td> 
+                                     <td>
+                                        <i class="fa fa-times-circle"(click)="removeOrganization(organization)"></i>
+                                    </td>
+                                </tr>
+                            </table> 
+                            <br/>
+                             <a style="color:skyblue" class="small3" data-toggle="modal" data-target=".bd-example-modal-xl1">Choose Organizations</a>  
+                            <form >                                
+                                <div class="modal fade bd-example-modal-xl1" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel1" aria-hidden="true">
+                                <div class="modal-dialog modal-xl1">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel1">Choose Organizations</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
+                                                            <thead>
+                                                                    <tr>
+                                                                        <th>Organization Name</th>
+                                                                        <th>Code</th>
+                                                                        <th>Type</th>
+                                                                        <th>Address</th>
+                                                                      
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                            </thead>
+                                                            <tbody *ngFor="let organization of organizationsd">
+                                        
+                                                                        <tr>
+                                                                                <td> {{ organization.orgName }} </td>
+                                                                                <td> {{ organization.orgCode }} </td>
+                                                                                <td> {{ organization.type }}</td>
+                                                                                <td> {{ organization.street }} </td>
+                                                                                
+                                                                                <td>
+                                                                                <button type="button" class="btn-primary" (click)="onadd2(organization.orgName)" data-dismiss="modal">Add</button>
+                                                                                            
+                                                                                </td>
+                                                                        </tr>
+                                        
+                                                            </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                    </div>
+                                </div>
+                                </div>   
+                            </form>                      
+                        </div>
+                    </div>
+
+                      <div class="form-group row">
+                          <label class="col-sm-4 col-form-label small">*Code :</label>
+                          <div class="col-sm-8">
+                              <input class="form-control" type="text" required  id="code" name="code" ngModel required> 
+                          </div>
+                      </div>
+                      
+                      <div class="form-group row">
+                          <label class="col-sm-4 col-form-label small">* Name : </label>
+                          <div class="col-sm-8">
+                              <input class="form-control" type="text" required id="name" name="name" ngModel >
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                          <label class="col-sm-4 col-form-label small">* Tuition :</label>
+                          <div class="col-sm-8 form-inline">
+                              <input class="form-control" type="text" style="width:25%" id="tuition" name="tuition" ngModel>
+                              <label class="small">  USD</label>
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                          <label class="col-sm-4 col-form-label small">Description :</label>
+                          <div class="col-sm-8">
+                            <textarea class="form-control" rows="3" id="description" name="description" ngModel></textarea>
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                          <label class="col-sm-4 col-form-label small">Targeted Learners :</label>
+                          <div class="col-sm-8">
+                            <textarea class="form-control" rows="3" id="targetedLearners" name="targetedLearners" ngModel></textarea>
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                          <label class="col-sm-4 col-form-label small">Duration :(hours)</label>
+                          <div class="col-sm-8">
+                              <input class="form-control" type="text" id="duration" name="duration" ngModel >
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                          <label class="col-sm-4 col-form-label small">Discipline :</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" id="major" name="major" ngModel>
+                                <option *ngFor="let majors of disciplinesd" [value]="majors.name">{{ majors.name }}</option>
+                            </select>
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                          <label class="col-sm-4 col-form-label small">* Delivery Method :</label>
+                          <div class="col-sm-8">
+                              <select class="form-control" id="deliveryMethod" name="deliveryMethod" ngModel>
+                                    <option *ngFor="let deliveryMethods of deliveryMethod" [value]="deliveryMethods">{{ deliveryMethods }}</option>
+                              </select>
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                          <label class="col-sm-4 col-form-label small">Approval Required :</label>
+                          <div class="col-sm-8 form-inline">
+                                <div class="radio" *ngFor="let option of approval">
+                                        <label >
+                                            <input type="radio" name="approvalRequired" id="approvalRequired" [value]="option" ngModel>{{ option }}
+                                        </label>      
+                                        </div>
+                          </div>    
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">Can Relaunch :</label>
+                            <div class="col-sm-8 form-inline">
+                                    <div class="radio" *ngFor="let option of relaunch">
+                                            <label >
+                                                <input type="radio" name="canRelaunch" id="canRelaunch" [value]="option" ngModel>{{ option }}
+                                            </label>      
+                                    </div>
+                            </div>    
+                          </div>
+
+                          <div class="form-group row">
+                              <label class="col-sm-4 col-form-label small">Content Type :</label>
+                              <div class="col-sm-8">
+                                    <select class="form-control" id="contentType" name="contentType" ngModel>
+                                            <option *ngFor="let Content_types of Content_type" [value]="Content_types">{{ Content_types }}</option>
+                                      </select>
+                              </div>
+                          </div>
+
+                          <!-- <div class="form-group row">
+                              <label class="col-sm-4 col-form-label small">Resource Content :</label>
+                              <div class="col-sm-8">
+                                    <select class="form-control" id="resourceContent" name="resourceContent" ngModel>
+                                            <option *ngFor="let resources of resource" [value]="resources">{{ resources }}</option>
+                                      </select>
+                              </div>
+                          </div> -->
+
+                          <div class="form-group row">
+                              <label class="col-sm-4 col-form-label small">Self-Certified Completion :
+                                </label>
+                              <div class="col-sm-8 form-inline">
+                                    <div class="radio" *ngFor="let option of Certified">
+                                            <label >
+                                                <input type="radio" name="selfCertifiedCompletion" id="selfCertifiedCompletion" [value]="option" ngModel>{{ option }}
+                                            </label>      
+                                            </div>
+                              </div>    
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label small">Course Completion Certificate :
+                                  </label>
+                                <div class="col-sm-8 form-inline">
+                                        <div class="radio" *ngFor="let option of Completion">
+                                                <label >
+                                                    <input type="radio" name="courseCompletionCertificate" id="courseCompletionCertificate" [value]="option" ngModel>{{ option }}
+                                                </label>      
+                                                </div>
+                                </div>    
+                              </div>
+                               
+                                    <div class="form-group row ">
+                                        <label class="col-sm-4 col-form-label small">Status  :</label>
+                                    <div class="col-sm-8 " >
+                                                    <div class="radio" *ngFor="let option of status">
+                                                <label >
+                                                    <input type="radio" name="status" id="status" [value]="option" ngModel>{{ option }}
+                                                </label>      
+                                                </div>
+                                    </div>
+                                    </div>
+                                    
+                                  <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label small">Course Content :</label>
+                                       <div class="col-sm-8">
+                                            <table>
+                                                <tr *ngFor="let contact of contacts" style="margin-bottom:10px">
+                                                    <td >
+                                                      <label class="col-sm-4 col-form-label" id="content" name="content" > {{contact.contName}} </label> 
+                          
+                                                    </td>
+                                                     <td>
+                                                            <i class="fa fa-times-circle" (click)="removeContact(contact)" ></i>
+                                                        </td>
+                                                </tr>
+                                            </table> 
+                                              <br/>
+                                      
+                                             <a style="color:skyblue" class="small3" data-toggle="modal" data-target=".bd-example-modal-xl">Choose Content</a>  
+                                            <form >                             
+                                                <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-xl">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Choose Content</h5>
+                                                                
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
+                                                                            <thead>
+                                                                                    <tr>
+                                                                                        <th>Content Name</th>
+                                                                                        <th>Type</th>
+                                                                                        <th>Status</th>
+                                                                                        <th>Action</th>
+                                                                                    </tr>
+                                                                            </thead>
+                                                                            <tbody *ngFor="let content of contentss">
+                                                        
+                                                                                        <tr>
+                                                                                                <td> {{ content.name }} </td>
+                                                                                                <td> {{ content.type }}</td>
+                                                                                                <td>{{ content.status }} </td> 
+                                                                                                <td>
+                                                                                                <button type="button" class="btn-primary" (click)="onAdd(content.name)" data-dismiss="modal">Add</button>
+                                                                                                            
+                                                                                                </td>
+                                                                                        </tr>
+                                                        
+                                                                            </tbody>
+                                                                    </table>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                </div>
+                                                    </div>
+                                                </div>
+                                                </div>   
+                                            </form>          
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                      
+                 
+              </div>
+          </div>
+      </div>
+
+      <div class="col-md-6" >
+          <div class="ibox">
+                <div class="form-horizontal">
+                      <div class="ibox">
+                          <div class="ibox-head">
+                              <div class="ibox-title">Additional Information</div>
+                              <div class="ibox-tools">
+                                  <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                              </div>
+                          </div>
+                          <div class="ibox-body" >
+                            <div class="form-group row">
+                                    
+                                    <label class="col-sm-4 col-form-label small">Language : </label> 
+                                    <div class="col-sm-8 form-inline">
+                                    <select class="form-control" id="language" name="language" ngModel>
+                                            <option *ngFor="let langs of Languages" [value]="langs">{{ langs }}</option>
+                                        </select>
+                                    <label class="small"> *   Current Translation</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label small">Notes :</label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" rows="3" id="notes" name="notes" ngModel></textarea>
+                                </div>
+                            </div>
+                       
+
+                                  <div class="form-group row" >
+                                    <label class="col-sm-4 col-form-label small">Course Display Date : (DD/MM/YYYY)</label>
+                                    <div class="col-sm-8">
+                                            <div class="form-group date">
+                                                    <input class="form-control" type="date"  id="courseDisplayDate" name="courseDisplayDate" ngModel>
+                                            </div>
+                                </div>
+                                </div>
+
+                                <div class="form-group row" id="date_1">
+                                    <label class="col-sm-4 col-form-label small">Enrollment Open Date : (DD/MM/YYYY)</label>
+                                    <div class="col-sm-8">
+                                            <div class="form-group date">
+                                                    <input class="form-control" type="date"  id="enrollmentOpenDate" name="enrollmentOpenDate" ngModel>
+                                            </div>
+                                </div>
+                                </div>
+
+                                <div class="form-group row" id="date_1">
+                                    <label class="col-sm-4 col-form-label small">Enrollment Close Date : (DD/MM/YYYY)</label>
+                                    <div class="col-sm-8">
+                                            <div class="form-group date">
+                                                    <input class="form-control" type="date"  id="enrollmentCloseDate" name="enrollmentCloseDate" ngModel>
+                                            </div>
+                                </div>
+                                </div>
+
+                                <div class="form-group row" id="date_1">
+                                    <label class="col-sm-4 col-form-label small">Course Hide Date : (DD/MM/YYYY)</label>
+                                    <div class="col-sm-8">
+                                            <div class="form-group date">
+                                                    <input class="form-control" type="date"  id="courseHideDate" name="courseHideDate" ngModel>
+                                            </div>
+                                </div>
+                                </div>
+                                <div class="form-group row" id="date_1">
+                                    <label class="col-sm-4 col-form-label small">Certification Calculation Date : (DD/MM/YYYY)</label>
+                                    <div class="col-sm-8">
+                                            <div class="form-group date">
+                                                    <input class="form-control" type="date"  id="certificationCalculationDate" name="certificationCalculationDate" ngModel>
+                                            </div>
+                                </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label small">Days for Student to Complete (Due Date) :</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control small2" type="text" id="daysStdToCompl" name="daysStdToCompl" ngModel >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label small">Days Before Due Date to Remind Student :</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control small2" type="text" id="daysBeforeStdToCompl" name="daysBeforeStdToCompl" ngModel >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label small">Transcript Expiration Days :</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control small2" type="text" id="expireDays" name="expireDays" ngModel >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label small">Days Before Transcript Expiration to Remind Student :</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control small2" type="text" id="remindStudent" name="remindStudent" ngModel >
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label small">* Enrollment Restriction :</label>
+                                    <div class="col-6 m-b-20">
+                                        <div class="check-list">
+                                                <select class="form-control" id="enrollmentRestriction" name="enrollmentRestriction" ngModel>
+                                                        <option *ngFor="let Enrollments of Enrollment" [value]="Enrollments">{{ Enrollments }}</option>
+                                                    </select>
+                                           </div>
+                                        </div>
+                                    </div>
+                                        <!-- <div class="form-group row">
+                                                <div class="col-sm-4 form-inline"> 
+ 
+                                        </div>
+
+                                     <div class="col-sm-8 form-inline"> 
+                                           <label class="col-sm-4 col-form-label small" style="font-size: 10px">* Total Allowed Enrollments:
+                                                (Total Allowed Enrollments is required)</label>
+                                           <input class="form-control" type="text" style="width: 15%" id="enrollmentdays" name="enrollmentdays"ngModel >
+                                    </div>
+                                </div> -->
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label small">* Accumulate Credit :</label>
+                                    <div class="col-sm-8 form-inline" >
+                                            <div class="radio" *ngFor="let option of accumulate">
+                                                    <label >
+                                                        <input type="radio" name="accumulateCredit" id="accumulateCredit" [value]="option" ngModel>{{ option }}
+                                                    </label>      
+                                                    </div>
+                                    </div>    
+                                  </div>
+
+                                  <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label small">Credit :</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" id="credit" name="credit" ngModel>
+                                    </div>
+                                </div>
+                                    <!-- <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label small">Subscription Program :</label> 
+                                        <div class="col-sm-8 form-inline">
+                                            <select class="form-control small1" style="width:15%" id="subscriptionProgram" name="subscriptionProgram" ngModel>
+                                                <option value=""></option>
+                                                <option value="">SUB01</option>
+                                                
+                                            </select>
+                                            <a routerLinkActive="active" routerLink="/AddSubscription" class="small">or Add new subscription program</a>                          </div>
+                                        </div> -->
+                                        
+
+                                    <!-- <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label small">Non-Subscribers Can Enroll :</label>
+                                        <div class="col-sm-8 form-inline">
+                                              
+                                                <div class="radio" *ngFor="let option of non_subscribers">
+                                                        <label >
+                                                            <input type="radio" name="nonSubscriptionCanEnroll" id="nonSubscriptionCanEnroll" [value]="option" ngModel>{{ option }}
+                                                        </label>      
+                                                        </div>      
+                                        </div>    
+                                      </div> -->
+                                      <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label small">* Instructional Languages :</label>
+                                        <div class="col-sm-8">
+                                                <select class="form-control" name="instructionalLanguages" id="instructionalLanguages" ngModel>
+                                                      <option *ngFor="let option of instructionallanguages" [value]="option">{{ option }}</option>
+                                                </select>
+                                            </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label small">Version # :</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control" type="text" style="width:25%" id="version" name="version" ngModel>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label small">Allow Use Of Interest Lists :</label>
+                                        <div class="col-sm-8 form-inline">
+                                                <div class="radio" *ngFor="let option of allowUseOfInterestLists">
+                                                        <label >
+                                                            <input type="radio" name="allowUseOfInterestLists" id="allowUseOfInterestLists" [value]="option" ngModel>{{ option }}
+                                                        </label>      
+                                                        </div>
+                                        
+                                                   
+                                        </div>    
+                                      </div>
+
+                                    <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Last Modified : (MM/DD/YYYY)</label>
+                                      <div class="col-sm-8">
+                                        <label class="col-sm-4 col-form-label">:</label>
+
+
+                                      </div>
+                                  </div>
+
+                                  <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label small">Last Modified By :</label>
+                                    <div class="col-sm-8">
+                                      <label class="col-sm-4 col-form-label">:</label>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <div class="form-group row">
+                            <div class="col-sm-8 ml-sm-auto">
+                                    <button class="btn btn-info" type="submit">Submit</button>
+                                </div>
+                        </div>
+                </div>
+                                    
+  
+  </div>
+ </div>
+</form>
+
+          
+          
+
+
+

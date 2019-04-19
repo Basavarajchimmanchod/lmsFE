@@ -1,0 +1,52 @@
+<div class="page-heading">
+    <h1 class="page-title">View Discipline</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html"><i class="la la-home font-20"></i></a>
+        </li>
+    </ol>
+  </div>
+  <div class="page-content fade-in-up">
+    <div class="ibox">
+        <div class="ibox-head">
+            <div class="ibox-title">View Discipline</div>
+        </div>
+        <div class="ibox-body">
+            <table class="table table-striped table-bordered table-hover table-responsive" id="example-table" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                                <th>Name</th>
+                                <th>Code</th>
+                                <th>Status</th>
+                                <th> Action </th>
+
+                        </tr>
+                     
+              </thead>
+                        <tbody *ngFor="let discipline of disciplinesd; let i=index">
+  
+                                <tr>
+                                  <td> {{ discipline.name}} </td>
+                                  <td>{{ discipline.code }}</td>
+                                  <td>{{ discipline.status }}</td>    
+                                        <!-- <td> {{ Terms.termName }} </td>
+                                        <td> {{ Terms.startDate }}</td>"['/edit-discipline', Terms.id]"
+                                        <td>{{ Terms.endDate }} </td>  -->
+                                       <td>
+                                        <button type="button"><a [routerLink]="['/edit-discipline',discipline.id]"><i class="ti-pencil-alt"></i></a></button>
+                                        <button type="button"><a [routerLink]="['/delete-discipline',discipline.id]"><i class="ti-trash"></i></a></button>
+                                        <button type="button"><a [routerLink]="['/view-discipline-details',discipline.id]"><i class="ti-list"></i></a></button>
+
+                                          <!-- <button type="button" >-->
+                                          <!--data-toggle="tooltip" data-placement="bottom" title="Delete details" >--> 
+                                          <!-- <a [routerLink]="['/delete-Term', Terms.id]" style="color:lightseagreen" ><i class="ti-list"></i></a> </button>  --> 
+                                      </td>
+                                    </tr>
+                                   
+                </tbody>
+                </table>
+        </div>
+    </div>
+  </div>
+                       
+              

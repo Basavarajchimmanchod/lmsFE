@@ -1,0 +1,37 @@
+label.small
+{
+    font-size: 11px;
+    text-align: right;
+}
+
+select.small1
+{
+    font-size:11px;
+    text-align: left;
+}
+
+input.small2
+{
+    font-size:11px;
+    text-align:left;
+}
+a.small3
+{
+    font-size: 11px;
+    text-align:left;
+}
+text.small4
+{
+    padding:10px;
+
+}
+label.small5 /* For Radio button */
+{
+    font-size:11px;
+    text-align:left;
+}
+label.small6 /* For Checkbox Buton */
+{
+    font-size:11px;
+    text-align:left;
+}

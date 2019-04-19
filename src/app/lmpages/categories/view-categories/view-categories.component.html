@@ -1,0 +1,62 @@
+<div class="page-heading">
+  <h1 class="page-title">View Categories</h1>
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+          <a href="index.html"><i class="la la-home font-20"></i></a>
+      </li>
+  </ol>
+</div>
+<div class="page-content fade-in-up">
+  <div class="ibox">
+      <div class="ibox-head">
+          <div class="ibox-title">View Categories</div>
+      </div>
+      <div class="ibox-body">
+          <table class="table table-striped table-bordered table-hover table-responsive" id="example-table" cellspacing="0" width="100%">
+                  <thead>
+                    <tr>
+                    <th>Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Linked Resources</th>
+                    <th> Action </th>
+                </tr>
+            </thead>
+           
+                      <tbody *ngFor="let Categorie of Categoriesd; let i=index">
+
+                              <tr>
+                                      <td> {{ Categorie.name }} </td>
+                                      <td> {{ Categorie.startDate }}</td>
+                                      <td>{{ Categorie.endDate }} </td> 
+                                      <td >
+                                        <span *ngFor="let contents of Categorie.content"> {{ contents.contName }}<br/> </span></td>
+                                     <td>
+                                        <!-- routerLink="/detail/{{hero.id}}" [routerLink]="['/edit-Categorie', Categorie.id-1]" -->
+                                      <button type="button"><a routerLink="/edit-Categorie/{{Categorie.id}}"><i class="ti-pencil-alt"></i></a></button>
+                                        <!-- <a routerLink="/tables/datatables"> -->
+                                      <button type="button" ><!--data-toggle="tooltip" data-placement="bottom" title="Delete details" >--> 
+                                        <a routerLink="/delete-Categorie/{{Categorie.id}}" style="color:lightseagreen" ><i class="ti-trash"></i></a> </button>  
+
+                                        <button type="button" ><!--data-toggle="tooltip" data-placement="bottom" title="Delete details" >--> 
+                                          <a routerLink="/view-Categories/{{Categorie.id}}" style="color:lightseagreen" ><i class="ti-list"></i></a> </button>  
+                                     </td>
+                                  </tr>
+
+              </tbody>
+
+              <!-- <tfoot>
+                    <tr>
+                    <th>Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Linked Resources</th>
+                    <th> Action </th>
+                </tr>
+            </tfoot>  -->
+              </table>
+      </div>
+  </div>
+</div>
+                     
+            

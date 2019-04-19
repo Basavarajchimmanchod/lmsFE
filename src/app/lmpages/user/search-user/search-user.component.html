@@ -1,0 +1,187 @@
+<div class="page-heading">
+    <h1 class="page-title">Search User</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html"><i class="la la-home font-20"></i></a>
+        </li>
+       <!-- <li class="breadcrumb-item"></li>  -->
+    </ol>
+  </div>
+  
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+  <div class="row">
+      <div class="col-md-6" width="auto">
+          <div class="ibox">
+              <div class="ibox-head">
+                  <div class="ibox-title">Search User</div>
+                  <div class="ibox-tools">
+                      <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                  </div>
+              </div>
+              <div class="ibox-body">
+                 <!-- <p style="font-size:11px"> 
+                   To search for a course, enter your search criteria and click Search. From the list of courses that displays, you can click the course name to view detailed information about the course.
+                  </p> -->
+          
+              <div class="form-horizontal">
+                  <div class="form-group row">
+                      <label class="col-sm-4 col-form-label small">Keyword :
+                        </label>
+                      <div class="col-sm-8">
+                          <div class="form-group">
+                              <div class="input-group-icon right">
+                                  <div class="input-icon"><i class="ti-search"></i></div>
+                                  <input class="form-control" type="text" id="keywords" name="keywords" ngModel>
+                              </div>
+                              <label class="small">(User Name)
+                                </label>
+                          </div>
+                      </div>
+                  </div>
+                  
+                     
+                </div>
+            </div>
+          </div>
+          </div>
+          <div class="col-md-6" width="auto">
+                  <div class="ibox">
+           <div class="ibox-head">
+                  <div class="ibox-title">Filters</div>
+                  <div class="ibox-tools">
+                      <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                  </div>
+              </div>
+             <div class="ibox-body">
+              <div class="form-horizontal">  
+                  <div class="form-group row">
+                      <label class="col-sm-4 col-form-label small">First Name :</label>
+                      <div class="col-sm-8">
+                          <div class="form-group">
+                                  <input class="form-control" type="text" id="firstName" name="firstName" ngModel>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="form-group row">
+                      <label class="col-sm-4 col-form-label small">Last Name :</label>
+                      <div class="col-sm-8">
+                          <div class="form-group">
+                                  <input class="form-control" type="text" id="lastName" name="lastName" ngModel>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- <div class="form-group row">
+                      <label class="col-sm-4 col-form-label small">Organization :</label>
+                      <div class="col-sm-8">
+                        <div class="form-group">
+                            <select class="form-control" id="Organization" name="Organization" ngModel>
+                                <option>All</option>
+                                <option *ngFor="let organization of organizationd" [value]="organization.orgName">{{ organization.orgName }}</option>
+                            </select>
+                        </div>
+
+                    </div>
+                     
+                  </div> -->
+                  
+                  <div class="form-group row">
+                      <label class="col-sm-4 col-form-label small">Institutional Role :</label>
+                      
+                      <div class="col-sm-8">
+                        <div class="form-group">
+                            <select class="form-control" id="institutionalRoles" name="institutionalRoles" ngModel>
+                                    <option>All</option>
+
+                                <option *ngFor="let institutionalRole of institutionalRolesd" [value]="institutionalRole.name">{{ institutionalRole.name }}</option>
+                            </select>
+                        </div>
+
+                    </div>
+  
+                      </div>
+                  </div>
+  
+  
+                  <div class="form-group row">
+                      <label class="col-sm-4 col-form-label small">System Role :</label>
+                      
+                      <div class="col-sm-8">
+                        <div class="form-group">
+                            <select class="form-control" id="systemRole" name="systemRole" ngModel>
+                                    <option>All</option>
+
+                                <option *ngFor="let systemRole of systemRoled" [value]="systemRole.roleName">{{ systemRole.roleName }}</option>
+                            </select>
+                        </div>
+
+                    </div>
+ 
+                      </div>
+                  </div>
+  
+                  <div class="form-group row">
+                      <div class="form-group row">
+                          <div class="col-sm-8 ml-sm-auto">
+                              <button class="btn btn-info" type="submit">Search</button>
+                          </div>
+                      </div>
+              </div>
+  
+            </div>
+            </div>
+       
+
+
+
+            <div *ngIf="isDisable==true"> 
+                <div class="ibox">
+            
+                <div class="ibox-body" > 
+                 <div >
+                    <table class="table table-striped table-bordered table-hover table-responsive" id="example-table" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                    <th>User Name</th>
+                                    <th>Name</th>
+                                    <th>System Role</th>
+                                    <th> Institutional Role</th>
+                                    <th> Action </th>
+    
+                            </tr>
+                         
+                  </thead>
+                            <tbody *ngFor="let users of usersd; let i=index">
+      
+                                    <tr>
+                                          <td> {{ users.userName }} </td>
+                                            <td> {{ users.firstName }}</td>
+                                            <td>{{ users.systemRoles }} </td> 
+                                            <td>{{ users.institutionalRoles }} </td> 
+    
+                                           <td>
+                                            <button type="button"><a [routerLink]="['/edit-User',users.id]"><i class="ti-pencil-alt"></i></a></button>
+                                            <button type="button"><a [routerLink]="['/delete-User',users.id]"><i class="ti-trash"></i></a></button>
+                                            <button type="button"><a [routerLink]="['/view-User-Detail',users.id]"><i class="ti-list"></i></a></button>
+    
+                                          </td>
+                                        </tr>
+                                       
+                    </tbody>
+                    </table>
+            </div>
+            </div>
+            </div>
+            </div>
+
+
+
+
+          
+        </div>
+          </form>
+  
+  
+  
+  

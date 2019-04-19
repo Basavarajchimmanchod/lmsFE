@@ -1,0 +1,100 @@
+<div class="page-heading">
+  <h1 class="page-title">Add Term</h1>
+  <p style="font-size:10px">
+    Add a new term by filling in the fields below. When you are finished, click Submit. An asterisk [*] indicates a required field.      </p>
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+          <a href="index.html"><i class="la la-home font-20"></i></a>
+      </li>
+     <!-- <li class="breadcrumb-item"></li>  -->
+  </ol>
+</div>
+
+<div >
+   
+  <form #termForm="ngForm" (ngSubmit)="onSubmit(termForm)">
+    <div class="col-md-6" width="auto">
+            
+        <div class="ibox">
+            <!-- <div class="ibox-head">
+                  
+              <div class="ibox-title">General Information</div>
+              <div class="ibox-tools">
+                  <a class="ibox-collapse" data-widget="collapse" ><i class="fa fa-minus"></i></a>-->
+                <!--  <a class="fullscreen-link"><i class="fa fa-expand"></i></a> -->
+              <!-- </div>
+          </div> -->
+          <div class="ibox-body" > 
+              
+            
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label small">Name :</label>
+            <div class="col-sm-8">
+             <input class="form-control" id="termName" name="termName" [ngModel]="term.termName" required minlength="3" maxlength="15" pattern="^[a-zA-Z0-9]*" #uname="ngModel"> 
+             <div *ngIf="uname.errors && !isValidFormSubmitted" [ngClass] = "'error'"> 
+					<div *ngIf="(uname.dirty || uname.touched) && uname.errors.required"> 
+						User name required. {{ error}}
+					</div>						
+					<div *ngIf="uname.errors.pattern"> 
+						User name not valid.
+          </div>	
+          <div *ngIf="uname.errors.minlength"> 
+              User Name must be at least 3 characters long..
+            </div>
+            <div *ngIf="uname.errors.maxlength"> 
+                User Name should be only 15 characters long..
+              </div>
+			    </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+                <label class="col-sm-4 col-form-label small">Description :</label>
+                <div class="col-sm-8">
+                  <textarea class="form-control" rows="3" id="termDescription" name="termDescription" ngModel></textarea>
+                </div>
+                
+        </div>
+            
+        
+
+        <!-- <div class="form-group row ">
+              <label class="col-sm-4 col-form-label small">Duration  :</label>
+              <div class ="col-sm-8">
+                <input type="text" >
+              </div>
+        </div> -->
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label small form-inline">Duration  : </label>
+             <div class="col-sm-8 ">
+                            <div class="col-sm-1">
+                            <label>start </label>
+                          </div>
+                          <div class="col-sm-7">
+                              <input type="date" id="startDate" name="startDate" ngModel>
+                         
+                          </div>
+                          <div class="col-sm-1">
+                            <label>end </label>
+                          </div>
+                          <div class="col-sm-7">
+                              <input type="date" id="endDate" name="endDate" ngModel>
+                          </div>
+                        </div>
+                      </div>
+            
+            
+                               <div class="form-group row">
+                                        <div class="form-group row">
+                                            <div class="col-sm-8 ml-sm-auto">
+                                                <button class="btn btn-info" type="submit">submit</button>
+                                            </div>
+                                        </div>
+                                </div>
+
+                               
+  </div>
+</div>
+<!-- </form> -->
+</div>
+

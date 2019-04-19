@@ -1,0 +1,55 @@
+<div class="page-heading">
+    <h1 class="page-title">View Institutional Roles</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html"><i class="la la-home font-20"></i></a>
+        </li>
+    </ol>
+  </div>
+  <div class="page-content fade-in-up">
+    <div class="ibox">
+        <div class="ibox-head">
+            <div class="ibox-title">View Institutional Roles</div>
+        </div>
+        <div class="ibox-body">
+            <table class="table table-striped table-bordered table-hover table-responsive" id="example-table" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                                <th>Role Id</th>
+                                <th>Institutional Role Name</th>
+                                <th>Effective Date </th>
+                                <th> End Date</th>
+                                <th> Organisation </th>
+                                <th> Action </th>
+
+                        </tr>
+                     
+              </thead>
+                        <tbody *ngFor="let institutionalroles of institutionalroled; let i=index">
+   
+                                <tr>
+                                  <td> {{ institutionalroles.code}} </td>
+                                  <td>{{ institutionalroles.name }}</td>
+                                  <td>{{ institutionalroles.effectiveDate }}</td> 
+                                  <td>{{ institutionalroles.endDate }}</td>    
+                                  <td >
+                                    <span *ngFor="let institutionalrole of institutionalroles.lms"> {{ institutionalrole.orgName }}<br/> </span>
+                                  </td>
+                                       <td>
+                                        <button type="button"><a [routerLink]="['/edit-Institutional-Roles',institutionalroles.id]"><i class="ti-pencil-alt"></i></a></button>
+                                        <button type="button"><a [routerLink]="['/delete-Institutional-Roles',institutionalroles.id]"><i class="ti-trash"></i></a></button>
+                                        <button type="button"><a [routerLink]="['/view-Institutional-Roles-Detail',institutionalroles.id]"><i class="ti-list"></i></a></button>
+
+                                        <!-- <button type="button" >-->
+                                          <!--data-toggle="tooltip" data-placement="bottom" title="Delete details" >--> 
+                                          <!-- <a [routerLink]="['/delete-Term', Terms.id]" style="color:lightseagreen" ><i class="ti-list"></i></a> </button>  --> 
+                                      </td>
+                                    </tr>
+                                   
+                </tbody>
+                </table>
+        </div>
+    </div>
+  </div>
+                       
+              

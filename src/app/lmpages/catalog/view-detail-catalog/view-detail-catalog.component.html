@@ -1,0 +1,522 @@
+<div class="page-heading">
+    <h1 class="page-title">View Catalog</h1>
+    <hr>
+    <!-- <p style="font-size: 10px">You can add a new course by filling in the appropriate information below. When you are finished, click Add Course. An asterisk [*] indicates a required field.</p><br> -->
+  
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html"><i class="la la-home font-20"></i></a>
+        </li>
+       <!-- <li class="breadcrumb-item">Add Course</li> -->
+    </ol>
+  </div>
+  <form [formGroup]="coursesForm" (ngSubmit)="onSubmit(coursesForm)">
+    <div class="row">
+          <!-- <form #CoursesForm="ngForm" (ngSubmit)="onSubmit(CoursesForm)"> -->
+  
+        <div class="col-md-6" width="auto">
+            <div class="ibox">
+              
+                <div class="ibox-head">
+                    
+                    <div class="ibox-title">General Information</div>
+                    <div class="ibox-tools">
+                        <a class="ibox-collapse" data-widget="collapse" ><i class="fa fa-minus"></i></a>
+                      <!--  <a class="fullscreen-link"><i class="fa fa-expand"></i></a> -->
+                    </div>
+                </div>
+                <div class="ibox-body" >
+                      
+                    <div class="form-horizontal">
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small"> * Organizations :</label>
+                             <div class="col-sm-8">
+                            <table>
+                                <tr *ngFor="let organization of organizations;let i=index">
+                                    <label *ngIf="organization==empty">No Organization is selected</label>
+                                    <td>
+                                        <label class="col-sm-4 col-form-label" id="ownerOrganization" Name="ownerOrganization">{{ organization.orgName }} </label></td>
+                                    <td>
+                                        <!-- <button class="btn-danger"type="button" > -->
+                                    <!-- </button> -->
+                                </td>
+                                </tr>
+                            </table>
+                                <br/>
+                                    
+              </div>
+       </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">*Code :</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" id="code" formControlName="code" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">* Name : </label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" required id="name" formControlName="name" disabled >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">* Tuition :</label>
+                            <div class="col-sm-8 form-inline">
+                                <input class="form-control" type="text" style="width:25%" id="tuition" formControlName="tuition" disabled >
+                                <label class="small">  USD</label>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">Description :</label>
+                            <div class="col-sm-8">
+                              <textarea class="form-control" rows="3" id="description" formControlName="description" disabled ></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">Targeted Learners :</label>
+                            <div class="col-sm-8">
+                              <textarea class="form-control" rows="3" id="targetedLearners" formControlName="targetedLearners" disabled ></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">Duration :(hours)</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" id="duration" formControlName="duration" disabled >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">Discipline :</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" id="major" formControlName="major" disabled >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">* Delivery Method :</label>
+                            <div class="col-sm-8">
+                                
+                                <!-- <select class="form-control small1" required>
+                                    <option value=""></option>
+                                    <option value="">Assessment</option>
+                                    <option value="">Classroom</option>
+                                    <option value="">Course Group</option>
+                                    <option value="">eLearning</option>
+                                    <option value="">Self-Study</option>
+                                </select> -->
+  
+                                <input class="form-control" id="deliveryMethod" formControlName="deliveryMethod" disabled >
+                                   
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">Approval Required :</label>
+                            <div class="col-sm-8 form-inline">
+                                  <div class="radio" *ngFor="let option of approval">
+                                          <label >
+                                              <input type="radio" formControlName="approvalRequired" id="approvalRequired" [value]="option" disabled >{{ option }}
+                                          </label>      
+                                          </div>
+                                    <!-- <label class="ui-radio">
+                                        <input type="radio" name="test" checked="">
+                                        <span class="input-span"></span>Checked</label>-->
+                                        <!-- <label class="ui-radio ui-radio-gray small5">
+                                          <input type="radio" name="test2" >
+                                          <span class="input-span"></span>Yes</label>
+                                          <label class="ui-radio ui-radio-gray small5">
+                                              <input type="radio" name="test2" checked="">
+                                              <span class="input-span"></span>No</label> -->
+                                        <!-- <label class="ui-radio ui-radio-inline">
+                                            <input type="radio" name="test">
+                                            <span class="input-span"></span>Option 3</label> -->
+                            </div>    
+                          </div>
+                          <div class="form-group row">
+                              <label class="col-sm-4 col-form-label small">Can Relaunch :
+                                </label>
+                              <div class="col-sm-8 form-inline">
+                                      <div class="radio" *ngFor="let option of relaunch">
+                                              <label >
+                                                  <input type="radio" formControlName="canRelaunch" id="canRelaunch" [value]="option" disabled >{{ option }}
+                                              </label>      
+                                              </div>
+                                      <!--                                    
+                                          <label class="ui-radio ui-radio-gray small5">
+                                              <input type="radio" name="test3" checked="">
+                                              <span class="input-span"></span>Yes</label>
+                                          <label class="ui-radio ui-radio-gray small5">
+                                              <input type="radio" name="test3" >
+                                              <span class="input-span"></span>No</label> -->
+                                         
+                              </div>    
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label small">Content Type :</label>
+                                <div class="col-sm-8">
+                                      <input class="form-control" id="contentType" formControlName="contentType" disabled >
+                                             
+  
+                                    <!-- <select class="form-control small1">
+                                        <option value=""></option>
+                                        <option value="">Resource</option>
+                                        <option value="">Link</option>
+                                       
+                                    </select> -->
+                                </div>
+                            </div>
+                            <!--  -->
+  
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label small">Self-Certified Completion :
+                                  </label>
+                                <div class="col-sm-8 form-inline">
+                                   
+                                      <div class="radio" *ngFor="let option of Certified">
+                                              <label >
+                                                  <input type="radio" formControlName="selfCertifiedCompletion" id="selfCertifiedCompletion" [value]="option" disabled >{{ option }}
+                                              </label>      
+                                              </div>
+  
+                                            <!-- <label class="ui-radio ui-radio-gray small5">
+                                              <input type="radio" name="test4" checked="">
+                                              <span class="input-span"></span>Yes</label>
+                                              <label class="ui-radio ui-radio-gray small5">
+                                                  <input type="radio" name="test4" >
+                                                  <span class="input-span"></span>No</label> -->
+                                          
+                                </div>    
+                              </div>
+  
+                              <div class="form-group row">
+                                  <label class="col-sm-4 col-form-label small">Course Completion Certificate :
+                                    </label>
+                                  <div class="col-sm-8 form-inline">
+                                          <div class="radio" *ngFor="let option of Completion">
+                                                  <label >
+                                                      <input type="radio" formControlName="courseCompletionCertificate" id="courseCompletionCertificate" [value]="option" disabled >{{ option }}
+                                                  </label>      
+                                                  </div>
+                                              <!-- <label class="ui-radio ui-radio-gray small5">
+                                                  <input type="radio" name="test5" checked="">
+                                                  <span class="input-span"></span>Yes</label>
+                                                  <label class="ui-radio ui-radio-gray small5">
+                                                      <input type="radio" name="test5" >
+                                                      <span class="input-span"></span>No</label> -->
+                                         
+  
+                                  </div>    
+                                </div>
+                                 
+                                      <div class="form-group row ">
+                                          <label class="col-sm-4 col-form-label small">Status  :</label>
+                                      <div class="col-sm-8 " >
+                                                      <div class="radio" *ngFor="let option of status">
+                                                  <label >
+                                                      <input type="radio" formControlName="status" id="status" [value]="option" disabled >{{ option }}
+                                                  </label>      
+                                                  </div>
+                                      </div>
+                                      </div>
+                                      
+                                      <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label small">Course Content :</label>
+                                     
+                                     <div class="col-sm-8 ">
+                                        <table>
+                                            <tr *ngFor="let contact of contacts;let i=index">
+                                                <label *ngIf="contact==empty">No contact is selected</label>
+                                                <td>
+                                                    <label class="col-sm-4 col-form-label" id="contact" Name="contact">{{ contact.contName }} </label></td>
+                                                <td>
+                                                    <!-- <button class="btn-danger"type="button" > -->
+                                                <!-- </button> -->
+                                            </td>
+                                            </tr>
+                                        </table>
+                                                    
+                          </div>
+                   </div>
+                   </div>
+  
+  
+                        
+                   
+                </div>
+            </div>
+        </div>
+  
+        <div class="col-md-6" >
+            <div class="ibox">
+                  <div class="form-horizontal">
+                        <div class="ibox">
+                            <div class="ibox-head">
+                                <div class="ibox-title">Additional Information</div>
+                                <div class="ibox-tools">
+                                    <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                                </div>
+                            </div>
+                            <div class="ibox-body" >
+                              <div class="form-group row">
+                                      
+                                      <label class="col-sm-4 col-form-label small">Language : </label> 
+                                      <div class="col-sm-8 form-inline">
+  
+                                  <!-- 
+                                      <select class="form-control small1">
+                                          <option value="">English</option>
+                                          <option value="">Chinese - China</option>
+                                          <option value="">English - Australia</option>
+                                          <option value="">English - United Kingdom</option>
+                                          <option value="">Francais - Canada</option>
+                                          <option value="">German - Germany</option>
+                                          <option value="">Italian - Italy</option>
+                                          <option value="">Portuguese - Brazil</option>
+                                          <option value="">Espariol - Mexico</option>
+                                      </select> -->
+  
+                                      <input class="form-control" id="language" formControlName="language" disabled>
+                                          
+  
+                                  </div>
+                              </div>
+  
+                              <div class="form-group row">
+                                  <label class="col-sm-4 col-form-label small">Notes :</label>
+                                  <div class="col-sm-8">
+                                      <textarea class="form-control" rows="3" id="notes" formControlName="notes" disabled></textarea>
+                                  </div>
+                              </div>
+                         
+  
+                                    <div class="form-group row" id="date_1">
+                                      <label class="col-sm-4 col-form-label small">Course Display Date : (MM/DD/YYYY)</label>
+                                      <div class="col-sm-8">
+                                              <div class="form-group date">
+                                                      <input class="form-control" type="date"  id="courseDisplayDate" formControlName="courseDisplayDate" disabled >
+                                              </div>
+                                  </div>
+                                  </div>
+  
+                                  <div class="form-group row" id="date_1">
+                                      <label class="col-sm-4 col-form-label small">Enrollment Open Date : (MM/DD/YYYY)</label>
+                                      <div class="col-sm-8">
+                                              <div class="form-group date">
+                                                      <input class="form-control" type="date"  id="enrollmentOpenDate" formControlName="enrollmentOpenDate" disabled >
+                                              </div>
+                                  </div>
+                                  </div>
+  
+                                  <div class="form-group row" id="date_1">
+                                      <label class="col-sm-4 col-form-label small">Enrollment Close Date : (MM/DD/YYYY)</label>
+                                      <div class="col-sm-8">
+                                              <div class="form-group date">
+                                                      <input class="form-control" type="date"  id="enrollmentCloseDate" formControlName="enrollmentCloseDate" disabled>
+                                              </div>
+                                  </div>
+                                  </div>
+  
+                                  <div class="form-group row" id="date_1">
+                                      <label class="col-sm-4 col-form-label small">Course Hide Date : (MM/DD/YYYY)</label>
+                                      <div class="col-sm-8">
+                                              <div class="form-group date">
+                                                      <input class="form-control" type="date"  id="courseHideDate" formControlName="courseHideDate" disabled >
+                                              </div>
+                                  </div>
+                                  </div>
+                                  <div class="form-group row" id="date_1">
+                                      <label class="col-sm-4 col-form-label small">Certification Calculation Date : (MM/DD/YYYY)</label>
+                                      <div class="col-sm-8">
+                                              <div class="form-group date">
+                                                      <input class="form-control" type="date"  id="certificationCalculationDate" formControlName="certificationCalculationDate" disabled>
+                                              </div>
+                                  </div>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Days for Student to Complete (Due Date) :</label>
+                                      <div class="col-sm-8">
+                                          <input class="form-control small2" type="text" id="daysStdToCompl" formControlName="daysStdToCompl"  disabled>
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Days Before Due Date to Remind Student :</label>
+                                      <div class="col-sm-8">
+                                          <input class="form-control small2" type="text" id="daysBeforeStdToCompl" formControlName="daysBeforeStdToCompl" disabled>
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Transcript Expiration Days :</label>
+                                      <div class="col-sm-8">
+                                          <input class="form-control small2" type="text" id="expireDays" formControlName="expireDays" disabled>
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Days Before Transcript Expiration to Remind Student :</label>
+                                      <div class="col-sm-8">
+                                          <input class="form-control small2" type="text" id="remindStudent" formControlName="remindStudent" disabled>
+                                      </div>
+                                  </div>
+  
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">* Enrollment Restriction :</label>
+                                      <div class="col-6 m-b-20">
+                                          <div class="check-list">
+                                                  <input class="form-control" id="enrollmentRestriction" formControlName="enrollmentRestriction" disabled >
+                                             
+                                             </div>
+                                          </div>
+                                      </div>
+                                     
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">* Accumulate Credit :</label>
+                                      <div class="col-sm-8 form-inline" >
+                                              <div class="radio" *ngFor="let option of accumulate">
+                                                      <label >
+                                                          <input type="radio" formControlName="accumulateCredit" id="accumulateCredit" [value]="option" disabled>{{ option }}
+                                                      </label>      
+                                                      </div>
+                                              
+                                      </div>    
+                                    </div>
+  
+                                    <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Credit :</label>
+                                      <div class="col-sm-8">
+                                          <input class="form-control" type="text" id="credit" formControlName="credit" disabled>
+                                      </div>
+                                  </div>
+                                      
+                                        <div class="form-group row">
+                                          <label class="col-sm-4 col-form-label small">* Instructional Languages :</label>
+                                              <div class="col-sm-8">
+                                                                          
+                                                                  <input class="form-control" formControlName="instructionalLanguages" id="instructionalLanguages" disabled>
+                                                      <!-- <label class="ui-checkbox small6">
+                                                              <input type="checkbox">
+                                                              <span class="input-span"></span>Chinese - China</label>
+                                                          <label class="ui-checkbox small6">
+                                                              <input type="checkbox">
+                                                              <span class="input-span"></span>Français - Canada</label>
+                                                          <label class="ui-checkbox small6">
+                                                              <input type="checkbox" >
+                                                              <span class="input-span"></span>German - Germany </label>
+                                                          <label class="ui-checkbox small6">
+                                                              <input type="checkbox">
+                                                              <span class="input-span"></span>Japanese - Japan</label>
+                                                          <label class="ui-checkbox small6">
+                                                              <input type="checkbox" >
+                                                              <span class="input-span"></span>Español - México</label>
+                                                          <label class="ui-checkbox small6">
+                                                                  <input type="checkbox">
+                                                                  <span class="input-span"></span>Dutch - The Netherlands</label>
+                                                          <label class="ui-checkbox small6">
+                                                                  <input type="checkbox" >
+                                                                  <span class="input-span"></span>Portuguese - Brazil </label>
+   -->
+  
+                                                  <!-- </div>
+                                                          <div class="col-3 m-b-10 auto">
+                                                                  <div class="check-list">
+                                                                          <div class="radio" *ngFor="let option of instructionallanguages1">
+                                                                                  <label >
+                                                                                      <input type="checkbox" name="instructionalLanguages" id="instructionalLanguages" value="option" >{{ option }}
+                                                                                  </label>      
+                                                                                  </div> -->
+                                                                          <!-- <label class="ui-checkbox small6">
+                                                                                  <input type="checkbox" checked="">
+                                                                                  <span class="input-span"></span>English</label>
+                                                                              <label class="ui-checkbox small6">
+                                                                                  <input type="checkbox">
+                                                                                  <span class="input-span"></span>Français - France</label>
+                                                                              <label class="ui-checkbox small6">
+                                                                                  <input type="checkbox" >
+                                                                                  <span class="input-span"></span>Italian - Italy </label>
+                                                                              <label class="ui-checkbox small6">
+                                                                                  <input type="checkbox">
+                                                                                  <span class="input-span"></span>Korean - Korea</label>
+                                                                              <label class="ui-checkbox small6">
+                                                                                  <input type="checkbox" >
+                                                                                  <span class="input-span"></span>Spanish - Spain</label>
+                                                                              <label class="ui-checkbox small6">
+                                                                                      <input type="checkbox">
+                                                                                      <span class="input-span"></span>Polish - Poland</label>
+                                                                              <label class="ui-checkbox small6">
+                                                                                      <input type="checkbox">
+                                                                                      <span class="input-span"></span>Russian - Russia</label>
+                                                          </div>  -->
+                                                        
+                                             
+                                      </div>
+  
+                                        </div>
+                                        <div class="form-group row">
+                                          <label class="col-sm-4 col-form-label small">Version # :</label>
+                                          <div class="col-sm-8">
+                                              <input class="form-control" type="text" style="width:25%" id="version" formControlName="version" disabled>
+                                          </div>
+                                      </div>
+  
+                                      <div class="form-group row">
+                                          <label class="col-sm-4 col-form-label small">Allow Use Of Interest Lists :</label>
+                                          <div class="col-sm-8 form-inline">
+                                                  <div class="radio" *ngFor="let option of allowUseOfInterestLists">
+                                                          <label >
+                                                            <input type="radio" formControlName="allowUseOfInterestLists" id="allowUseOfInterestLists" [value]="option" disabled>{{ option }}
+                                                        </label>      
+                                                          </div>
+  <!--                                                 
+                                                      <label class="ui-radio ui-radio-gray small5">
+                                                          
+                                                        <input type="radio" name="test8" checked="">
+                                                        <span class="input-span"></span>Yes</label>
+                                                        <label class="ui-radio ui-radio-gray small5">
+                                                            <input type="radio" name="test8" >
+                                                            <span class="input-span"></span>No</label> -->
+                                                     
+                                          </div>    
+                                        </div>
+  
+                                      <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label small">Last Modified : (MM/DD/YYYY)</label>
+                                        <div class="col-sm-8">
+                                          <label class="col-sm-4 col-form-label">:</label>
+  
+  
+                                        </div>
+                                    </div>
+  
+                                    <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Last Modified By :</label>
+                                      <div class="col-sm-8">
+                                        <label class="col-sm-4 col-form-label">:</label>
+  
+  
+                                      </div>
+                                  </div>
+  
+                                   <!-- <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label">Course Display Date :</label>
+                                      <div class="form-group" id="date_1">
+                                          <label class="font-normal"></label>
+                                          <div class="input-group date">
+                                              <input class="form-control" type="text" value="04/12/2018">
+                                              <span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
+                                              <label class="col-sm-4 col-form-label">(MM/DD/YYYY) </label>
+  
+                                          </div>
+                                      </div>
+                                      </div> 
+                                  </div>-->
+                              </div>
+                              </div>
+                          </div>
+                      </div>
+                      
+                     
+                                      
+    
+    </div>
+   </div>
+  </form>
+            
+            
+  
+  
+  
+  

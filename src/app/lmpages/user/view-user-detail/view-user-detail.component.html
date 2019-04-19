@@ -1,0 +1,258 @@
+<div class="page-heading">
+    <h1 class="page-title">view User Details</h1>
+    <hr>
+    <!-- <p style="font-size: 10px">The Add User form can be used to create login information for a new employee. Fill in all required fields and any desired optional fields, then click Submit. [*] indicates a required field.</p><br> -->
+  
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html"><i class="la la-home font-20"></i></a>
+        </li>
+       <!-- <li class="breadcrumb-item">Add Course</li> -->
+    </ol>
+  </div>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm)">
+    <div class="row">
+          <!-- <form #CoursesForm="ngForm" (ngSubmit)="onSubmit(CoursesForm)"> -->
+  
+        <div class="col-md-6" width="auto">
+            <div class="ibox">
+              
+                <div class="ibox-head">
+                    
+                    <div class="ibox-title">General Information</div>
+                    <div class="ibox-tools">
+                        <a class="ibox-collapse" data-widget="collapse" ><i class="fa fa-minus"></i></a>
+                      <!--  <a class="fullscreen-link"><i class="fa fa-expand"></i></a> -->
+                    </div>
+                </div>
+                <div class="ibox-body" >
+                      
+                    <div class="form-horizontal">
+                        
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">*User Name :</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" required  id="userName" formControlName="userName" disabled >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">* First Name : </label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" required id="firstName" formControlName="firstName" disabled >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">* Last Name :</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" id="lastName" formControlName="lastName" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">*Email :</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" id="email" formControlName="email" disabled >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">* Preferred Language :</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" id="language" formControlName="language" disabled>
+                            </div>
+                        </div>
+                   
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small"> * Organizations :</label>
+                            <div class="col-sm-8">
+                                <table>
+                                    <tr *ngFor="let organization of organizations" style="margin-bottom:10px">
+                                        <td >
+                                            <label class="col-sm-4 col-form-label" id="organizations" name="organizations">{{ organization.orgName }} </label>
+                                        </td> 
+                                         <td>
+                                        </td>
+                                    </tr>
+                                </table> 
+                                <br/>
+                              
+                                                      
+                            </div>
+                        </div>
+                
+                        
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small"> * Institutional Role :</label>
+                            <div class="col-sm-8">
+                                <table>
+                                    <tr >
+                                    <!-- *ngFor="let institutionald of institutionaldata" style="margin-bottom:10px"> -->
+                                        <td >
+                                          <label class="col-sm-4 col-form-label" id="institutionalRoles" name="institutionalRoles" > {{ institutionaldata }} </label> 
+              
+                                        </td>
+                                         <td>
+                                                <!-- <i class="fa fa-times-circle" (click)="removeInstitutionalRoles(institutionald)" ></i> -->
+                                            </td>
+                                    </tr>
+                                </table> 
+                                  <br/>
+                          
+                                   
+                            </div>
+                        </div>
+
+
+               
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small"> * System Role :</label>
+                            <div class="col-sm-8">
+                                <table>
+                                    <tr >
+                                    <!-- *ngFor="let institutionald of institutionaldata" style="margin-bottom:10px"> -->
+                                        <td >
+                                          <label class="col-sm-4 col-form-label" id="systemRoles" name="systemRoles" > {{ systemdata }} </label> 
+              
+                                        </td>
+                                         <td>
+                                                <!-- <i class="fa fa-times-circle" (click)="removeInstitutionalRoles(institutionald)" ></i> -->
+                                            </td>
+                                    </tr>
+                                </table> 
+                                  <br/>
+                          
+                               
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">* Password :</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" id="password" formControlName="password" disabled>
+                            </div>
+                        </div>
+                      
+                   </div>
+  
+                </div>
+            </div>
+        </div>
+  
+        <div class="col-md-6" >
+            <div class="ibox">
+                  <div class="form-horizontal">
+                        <div class="ibox">
+                            <div class="ibox-head">
+                                <div class="ibox-title">Additional Information</div>
+                                <div class="ibox-tools">
+                                    <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                                </div>
+                            </div>
+                            <div class="ibox-body" >
+                            
+                                    <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Effective Date : (DD/MM/YYYY)</label>
+                                      <div class="col-sm-8">
+                                              <div class="form-group date">
+                                                      <input class="form-control" type="date"  id="startDate" formControlName="startDate" disabled>
+                                              </div>
+                                  </div>
+                                  </div>
+  
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">End Date : (DD/MM/YYYY)</label>
+                                      <div class="col-sm-8">
+                                              <div class="form-group date">
+                                                      <input class="form-control" type="date"  id="endDate" formControlName="endDate" disabled>
+                                              </div>
+                                  </div>
+                                  </div>
+  
+                                 
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Voice :</label>
+                                      <div class="col-sm-8">
+                                          <input class="form-control small2" type="text" id="voice" formControlName="voice" disabled>
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Mobile :</label>
+                                      <div class="col-sm-8">
+                                          <input class="form-control small2" type="text" id="mobile" formControlName="mobile" disabled>
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Fax :</label>
+                                      <div class="col-sm-8">
+                                          <input class="form-control small2" type="text" id="fax" formControlName="fax" disabled>
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Affiliation :</label>
+                                      <div class="col-sm-8">
+                                          <input class="form-control small2" type="text" id="affiliation" formControlName="affiliation" disabled>
+                                      </div>
+                                  </div>
+  
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Street :</label>
+                                      <div class="col-sm-8">
+                                       <textarea class="form-control" rows="3" formControlName="street" id="street" disabled></textarea>
+                                          </div>
+                                      </div>
+                                       
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">City :</label>
+                                      <div class="col-sm-8" >
+                                         <input class="form-control small2" type="text" id="city" formControlName="city" disabled>
+                                      </div>    
+                                    </div>
+  
+                                    <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Country :</label>
+                                      <div class="col-sm-8">
+                                          <input class="form-control" id="country" formControlName="country" disabled>
+                                             
+                                            
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">State/Province :</label>
+                                      <div class="col-sm-8">
+                                        <input class="form-control" id="state" formControlName="state" disabled>
+                                            
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Postal Code :</label>
+                                      <div class="col-sm-8" >
+                                         <input class="form-control small2" type="text" id="postalCode" formControlName="postalCode" disabled>
+                                      </div>    
+                                    </div>
+                              </div>
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <div class="form-group row">
+                          <div class="form-group row">
+                              <div class="col-sm-8 ml-sm-auto">
+                                      <button class="btn btn-info" type="submit">Submit</button>
+                                  </div>
+                          </div>
+                  </div>
+                                      
+    
+    </div>
+   </div>
+  </form>
+  
+            
+            
+  
+  
+  
+  

@@ -1,0 +1,63 @@
+<div class="page-heading">
+  <h1 class="page-title">View Surveys Details</h1>
+  <!-- <p style="font-size:10px">
+        Use this form to Add a new resource category. Fill out the required information and click Submit. 
+      </p> -->
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+          <a href="index.html"><i class="la la-home font-20"></i></a>
+      </li>
+     <!-- <li class="breadcrumb-item"></li>  -->
+  </ol>
+</div>
+
+<div >
+  <form #announcementForm="ngForm" (ngSubmit)="onSubmit(announcementForm)">
+    <div class="col-md-8" width="auto">
+            
+        <div class="ibox">
+            <div class="ibox-head">
+                  
+              <div class="ibox-title">Surveys Details</div>
+              <div class="ibox-tools">
+                  <a class="ibox-collapse" data-widget="collapse" ><i class="fa fa-minus"></i></a>
+                <!--  <a class="fullscreen-link"><i class="fa fa-expand"></i></a> -->
+              </div>
+          </div>
+          <div class="ibox-body" > 
+              
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label small">Write About  </label> 
+            <div class="col-sm-8">
+              
+              <textarea class="form-control" rows="3" id="discription" name="discription" ngModel ></textarea>
+                   
+                </div>
+          </div>
+
+         
+
+        <div class="form-group row" >
+            <label class="col-sm-4 col-form-label small">Are You Alright?  </label>
+            <div class="col-sm-8 form-inline">
+              <div class="radio" *ngFor="let option of areYou">
+                      <label >
+                          <input type="radio" name="areYou" id="areYou" [value]="option" ngModel>{{ option }}
+                      </label>      
+                      </div>
+        </div>    
+        </div>
+
+        <div class="form-group row">
+          <div class="form-group row">
+              <div class="col-sm-8 ml-sm-auto">
+                      <button class="btn btn-info" type="submit">Submit</button>
+                  </div>
+          </div>
+  </div>
+                               
+  </div>
+</div>
+</div>
+</form>
+</div>

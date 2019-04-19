@@ -1,0 +1,78 @@
+<div class="page-heading">
+  <h1 class="page-title">View Term</h1>
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+          <a href="index.html"><i class="la la-home font-20"></i></a>
+      </li>
+  </ol>
+</div>
+<div class="page-content fade-in-up">
+  <div class="ibox">
+      <div class="ibox-head">
+          <div class="ibox-title">View Term</div>
+      </div>
+      <div class="ibox-body">
+          <table class="table table-striped table-bordered table-hover table-responsive" id="example-table" cellspacing="0" width="100%">
+                  <thead>
+                      <tr>
+                              <th rowcol="2">Term Name</th>
+                              <th colspan="2" style="text-align: center">Duration</th>
+                              <th rowcol="2"> Action </th>
+
+                      </tr>
+                    <tr>
+                        <th></th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+                      <tbody>
+                        <!-- *ngFor="let Terms of termsd; let i=index"> -->
+
+                        <tr>
+                                
+                          <td> Sem1/Term1 </td>
+                          <td> 26-02-19 </td> 
+                          <td> 28-02-19 </td> 
+                                <!-- <td> {{ course.code }} </td>
+                                <td> {{ course.name }}</td>
+                                <td>{{ course.deliveryMethod }} </td> 
+                                <td>{{ course.major }} </td>
+                                <td>{{ course.status }} </td> -->
+                             
+                               <td align=" center">
+                                <button type="button" ><a routerLink="/view-User-Term-Detail">
+                                   <!-- [routerLink]="['/delete-Courses', course.id]" style="color:lightseagreen" > -->
+                                   <i class="ti-list"></i></a> </button> 
+                                <!-- <button type="button" ><a routerLink="/courses-Details" style="color:lightseagreen" ><i class="ti-list"></i></a> </button>  -->
+             
+                               </td>
+                            </tr>
+                            <tr>
+                                
+                                <td> Sem2/Term2 </td>
+                                <td> 26-02-19 </td> 
+                                <td> 28-02-19 </td> 
+                                      <!-- <td> {{ course.code }} </td>
+                                      <td> {{ course.name }}</td>
+                                      <td>{{ course.deliveryMethod }} </td> 
+                                      <td>{{ course.major }} </td>
+                                      <td>{{ course.status }} </td> -->
+                                   
+                                     <td align=" center">
+                                      <button type="button" ><a routerLink="/view-User-Term-Detail">
+                                         <!-- [routerLink]="['/delete-Courses', course.id]" style="color:lightseagreen" > -->
+                                         <i class="ti-list"></i></a> </button> 
+                                      <!-- <button type="button" ><a routerLink="/courses-Details" style="color:lightseagreen" ><i class="ti-list"></i></a> </button>  -->
+                   
+                                     </td>
+                                  </tr>
+
+              </tbody>
+              </table>
+      </div>
+  </div>
+</div>
+                     
+            

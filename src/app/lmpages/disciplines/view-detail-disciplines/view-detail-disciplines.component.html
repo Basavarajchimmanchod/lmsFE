@@ -1,0 +1,104 @@
+<div class="page-heading">
+    <h1 class="page-title">View Discipline</h1>
+   
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html"><i class="la la-home font-20"></i></a>
+        </li>
+       <!-- <li class="breadcrumb-item"></li>  -->
+    </ol>
+  </div>
+  
+  <div >
+    <form [formGroup]="disciplineForm" (ngSubmit)="onSubmit(disciplineForm)">
+      <div class="col-md-6" width="auto">
+              
+          <div class="ibox">
+             
+            <div class="ibox-body" > 
+                
+              <div class="form-horizontal">
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label small"> Owner Organizations :</label>
+                    <div class="col-sm-8">
+                               <table>
+                                   <tr *ngFor="let organization of organizations;let i=index">
+                                       <label *ngIf="organization==empty">No Organization is selected</label>
+                                       <td>
+                                           <label class="col-sm-4 col-form-label" id="ownerOrganization" Name="ownerOrganization">{{ organization.orgName }} </label></td>
+                                       <td>
+                                           <!-- <button class="btn-danger"type="button" > -->
+                                           <!-- <i class="fa fa-times-circle"(click)="removeOrganization(organization)"></i> -->
+                                       <!-- </button> -->
+                                   </td>
+                                   </tr>
+                               </table>
+                               </div>
+      </div>
+      
+      
+  
+            <div class="form-group row">
+              <label class="col-sm-4 col-form-label small">* Code :</label>
+              <div class="col-sm-8">
+               <input class="form-control"  id="code" formControlName="code" disabled>  
+              </div>
+          </div>
+  
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label small">Language : </label> 
+            <div class="col-sm-8">
+               
+                <select class="form-control" id="language" formControlName="language" disabled>
+                    <option *ngFor="let langs of languages" [value]="langs">{{ langs }}</option>
+                </select>
+                </div>
+          </div>
+  
+          <div class="form-group row">
+              <label class="col-sm-4 col-form-label small">* Name : </label>
+              <div class="col-sm-8">
+                  <input class="form-control" type="text" required  id="name" formControlName="name" disabled>
+              </div>
+          </div>
+  
+          <div class="form-group row">
+                  <label class="col-sm-4 col-form-label small">* Description :</label>
+                  <div class="col-sm-8">
+                    <textarea class="form-control" rows="3" id="description" formControlName="description" disabled></textarea>
+                  </div>
+              </div>
+              
+          <div class="form-group row">
+                <label class="col-sm-4 col-form-label small"> Ordinal : </label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" required  id="ordinal" formControlName="ordinal" disabled>
+                </div>
+            </div>
+  
+          <div class="form-group row ">
+                <label class="col-sm-4 col-form-label small">Status  :</label>
+            <div class="col-sm-8 " >
+                            <div class="radio" *ngFor="let option of status">
+                          <label >
+                              <input type="radio" formControlName="status" id="status" [value]="option" disabled>{{ option }}
+                          </label>      
+                          </div>
+             <!-- <label class="ui-radio ui-radio-gray small5">
+                  <input type="radio" name="test12" checked="" >
+                  <span class="input-span"></span>Yes</label>
+              <label class="ui-radio ui-radio-gray small5">
+                  <input type="radio" name="test12" >
+                  <span class="input-span"></span>No</label> -->
+              
+              
+              </div>
+              </div>
+              
+                                 
+  
+                                 
+    </div>
+  </div>
+  <!-- </form> -->
+  </div>

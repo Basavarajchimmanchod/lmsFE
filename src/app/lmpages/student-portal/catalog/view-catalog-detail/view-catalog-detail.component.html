@@ -1,0 +1,49 @@
+<div class="page-heading">
+  <h1 class="page-title">View Course</h1>
+  <hr>
+  <!-- <p style="font-size: 10px">You can add a new course by filling in the appropriate information below. When you are finished, click Add Course. An asterisk [*] indicates a required field.</p><br> -->
+
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+          <a href="index.html"><i class="la la-home font-20"></i></a>
+      </li>
+     <!-- <li class="breadcrumb-item">Add Course</li> -->
+  </ol>
+</div>
+<form [formGroup]="coursesForm" (ngSubmit)="onSubmit(coursesForm)">
+  <div class="row">
+        <!-- <form #CoursesForm="ngForm" (ngSubmit)="onSubmit(CoursesForm)"> -->
+
+      <div class="col-md-6" width="auto">
+          <div class="ibox">
+            
+              <div class="ibox-head">
+                  
+                  <div class="ibox-title">General Information</div>
+                  <div class="ibox-tools">
+                      <a class="ibox-collapse" data-widget="collapse" ><i class="fa fa-minus"></i></a>
+                    <!--  <a class="fullscreen-link"><i class="fa fa-expand"></i></a> -->
+                  </div>
+              </div>
+              <div class="ibox-body" >
+                    
+                  <div class="form-horizontal">
+                
+                      <div class="form-group row">
+                          <label class="col-sm-4 col-form-label small">Description :</label>
+                          <div class="col-sm-8">
+                            <textarea class="form-control" rows="3" id="description" formControlName="description" disabled ></textarea>
+                          </div>
+                      </div>
+  
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+</form>
+          
+          
+
+
+

@@ -1,0 +1,426 @@
+<div class="page-heading">
+    <h1 class="page-title">Add User</h1>
+    <hr>
+    <p style="font-size: 10px">The Add User form can be used to create login information for a new employee. Fill in all required fields and any desired optional fields, then click Submit. [*] indicates a required field.</p><br>
+  
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html"><i class="la la-home font-20"></i></a>
+        </li>
+       <!-- <li class="breadcrumb-item">Add Course</li> -->
+    </ol>
+  </div>
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+    <div class="row">
+          <!-- <form #CoursesForm="ngForm" (ngSubmit)="onSubmit(CoursesForm)"> -->
+  
+        <div class="col-md-6" width="auto">
+            <div class="ibox">
+              
+                <div class="ibox-head">
+                    
+                    <div class="ibox-title">General Information</div>
+                    <div class="ibox-tools">
+                        <a class="ibox-collapse" data-widget="collapse" ><i class="fa fa-minus"></i></a>
+                      <!--  <a class="fullscreen-link"><i class="fa fa-expand"></i></a> -->
+                    </div>
+                </div>
+                <div class="ibox-body" >
+                      
+                    <div class="form-horizontal">
+                        
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">*User Name :</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" required  id="userName" name="userName" ngModel>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">* First Name : </label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" required id="firstName" name="firstName" ngModel >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">* Last Name :</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" id="lastName" name="lastName" ngModel>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">*Email :</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" id="email" name="email" ngModel>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">* Preferred Language :</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="language" name="language" ngModel>
+                                    <option *ngFor="let lang of languages" [value]="lang">{{ lang }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">* Organizations :</label>
+                            <div class="col-sm-8">
+                                <a routerLinkActive="active" routerLink="/ChooseOrganization" class="small3">Select an Organizations</a>                          </div>
+                        </div> -->
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small"> * Organizations :</label>
+                            <div class="col-sm-8">
+                                <table>
+                                    <tr *ngFor="let organization of organizations" style="margin-bottom:10px">
+                                        <td >
+                                            <label class="col-sm-4 col-form-label" id="organizations" Name="organizations">{{ organization.orgName }} </label>
+                                        </td> 
+                                         <td>
+                                            <i class="fa fa-times-circle"(click)="removeOrganization(organization)"></i>
+                                        </td>
+                                    </tr>
+                                </table> 
+                                <br/>
+                                 <a style="color:skyblue" class="small3" data-toggle="modal" data-target=".bd-example-modal-xl1">Choose Organizations</a>  
+                                <form >                                
+                                    <div class="modal fade bd-example-modal-xl1" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel1" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl1">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel1">Choose Organizations</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
+                                                                <thead>
+                                                                        <tr>
+                                                                            <th>Organization Name</th>
+                                                                            <th>Code</th>
+                                                                            <th>Type</th>
+                                                                            <th>Address</th>
+                                                                            <th>Action</th>
+                                                                        </tr>
+                                                                </thead>
+                                                                <tbody *ngFor="let organization of organizationsd">
+                                            
+                                                                            <tr>
+                                                                                    <td> {{ organization.orgName }} </td>
+                                                                                    <td> {{ organization.orgCode }} </td>
+                                                                                    <td> {{ organization.type }}</td>
+                                                                                    <td> {{ organization.city }} </td>
+                                                                                    <td>
+                                                                                    <button type="button" class="btn-primary" (click)="onadd2(organization.orgName)" data-dismiss="modal">Add</button>
+                                                                                                
+                                                                                    </td>
+                                                                            </tr>
+                                            
+                                                                </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                    </div>   
+                                </form>                      
+                            </div>
+                        </div>
+                
+                        <!-- <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">* Institutional Role :</label>
+                            <div class="col-sm-8">
+                                <a routerLinkActive="active" routerLink="/ChooseOrganization" class="small3">Select Institutional Role</a>                          </div>
+                        </div> -->
+                        
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small"> * Institutional Role :</label>
+                            <div class="col-sm-8">
+                                <table>
+                                    <tr >
+                                    <!-- *ngFor="let institutionald of institutionaldata" style="margin-bottom:10px"> -->
+                                        <td >
+                                          <label class="col-sm-4 col-form-label" id="institutionalRoles" name="institutionalRoles" > {{ institutionaldata }} </label> 
+              
+                                        </td>
+                                         <td>
+                                                <!-- <i class="fa fa-times-circle" (click)="removeInstitutionalRoles(institutionald)" ></i> -->
+                                            </td>
+                                    </tr>
+                                </table> 
+                                  <br/>
+                          
+                                 <a style="color:skyblue" class="small3" data-toggle="modal" data-target=".bd-example-modal-xl">Choose Institutional Roles</a>  
+                                <form >                             
+                                    <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Choose Content</h5>
+                                                    
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
+                                                                <thead>
+                                                                        <tr>
+                                                                            <th>Institutional Role Id</th>
+                                                                            <th>institutional Role Name</th>
+                                                                            <th>Action</th>
+                                                                        </tr>
+                                                                </thead>
+                                                                <tbody *ngFor="let institutional  of institutionalRolesd">
+                                            
+                                                                            <tr>
+                                                                                    <td> {{ institutional.code }} </td>
+                                                                                    <td> {{ institutional.name }}</td>
+                                                                                    <td>
+                                                                                    <button type="button" class="btn-primary" (click)="addInstitutionalRoles(institutional.name)" data-dismiss="modal">Add</button>
+                                                                                                
+                                                                                    </td>
+                                                                            </tr>
+                                            
+                                                                </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                    </div>   
+                                </form>          
+                            </div>
+                        </div>
+
+
+                        <!-- <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">* System Role :</label>
+                            <div class="col-sm-8">
+                                <a routerLinkActive="active" routerLink="/ChooseOrganization" class="small3">Select System Role</a>                          </div>
+                        </div> -->
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small"> * System Role :</label>
+                            <div class="col-sm-8">
+                                <table>
+                                    <tr >
+                                    <!-- *ngFor="let institutionald of institutionaldata" style="margin-bottom:10px"> -->
+                                        <td >
+                                          <label class="col-sm-4 col-form-label" id="systemRoles" name="systemRoles" > {{ systemdata }} </label> 
+              
+                                        </td>
+                                         <td>
+                                                <!-- <i class="fa fa-times-circle" (click)="removeInstitutionalRoles(institutionald)" ></i> -->
+                                            </td>
+                                    </tr>
+                                </table> 
+                                  <br/>
+                          
+                                 <a style="color:skyblue" class="small3" data-toggle="modal" data-target=".bd-example-modal-xl2">Choose System Roles</a>  
+                                <form >                             
+                                    <div class="modal fade bd-example-modal-xl2" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel2" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl2">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel2">Choose Content</h5>
+                                                    
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
+                                                                <thead>
+                                                                        <tr>
+                                                                            <th>System Role Id</th>
+                                                                            <th>System Role Name</th>
+                                                                            <th>Action</th>
+                                                                        </tr>
+                                                                </thead>
+                                                                <tbody *ngFor="let SystemRoles  of SystemRolesd">
+                                            
+                                                                            <tr>
+                                                                                    <td> {{ SystemRoles.roleId }} </td>
+                                                                                    <td> {{ SystemRoles.roleName }}</td>
+                                                                                    <td>
+                                                                                    <button type="button" class="btn-primary" (click)="addSystemRoles(SystemRoles.roleName)" data-dismiss="modal">Add</button>
+                                                                                                
+                                                                                    </td>
+                                                                            </tr>
+                                            
+                                                                </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                    </div>   
+                                </form>          
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">* Password :</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" id="password" name="password" ngModel >
+                            </div>
+                        </div>
+                        <!-- <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">* Confirm Password :</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" id="confirmPassword" name="confirmPassword" ngModel >
+                            </div>
+                        </div>
+                          
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small"> Generate Password :</label>
+                            <div class="col-sm-8">
+                                <input type="checkbox" id="generatePassword" name="generatePassword" ngModel >Auto-generate a New Password
+                            </div>
+                        </div>
+                       
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">Prompt Password Reset :</label>
+                            <div class="col-sm-8">
+                                <input type="checkbox" id="promptPasswordReset" name="promptPasswordReset" ngModel >You Should Change Password On Next Login
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">Notify User :</label>
+                            <div class="col-sm-8">
+                                <input type="checkbox" id="notifyUser" name="notifyUser" ngModel >Yes,notify user of new account
+                            </div>
+                        </div> -->
+                   </div>
+  
+                </div>
+            </div>
+        </div>
+  
+        <div class="col-md-6" >
+            <div class="ibox">
+                  <div class="form-horizontal">
+                        <div class="ibox">
+                            <div class="ibox-head">
+                                <div class="ibox-title">Additional Information</div>
+                                <div class="ibox-tools">
+                                    <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                                </div>
+                            </div>
+                            <div class="ibox-body" >
+                            
+                                    <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Effective Date : (DD/MM/YYYY)</label>
+                                      <div class="col-sm-8">
+                                              <div class="form-group date">
+                                                      <input class="form-control" type="date"  id="startDate" name="startDate" ngModel>
+                                              </div>
+                                  </div>
+                                  </div>
+  
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">End Date : (DD/MM/YYYY)</label>
+                                      <div class="col-sm-8">
+                                              <div class="form-group date">
+                                                      <input class="form-control" type="date"  id="endDate" name="endDate" ngModel>
+                                              </div>
+                                  </div>
+                                  </div>
+  
+                                 
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Voice :</label>
+                                      <div class="col-sm-8">
+                                          <input class="form-control small2" type="text" id="voice" name="voice" ngModel >
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Mobile :</label>
+                                      <div class="col-sm-8">
+                                          <input class="form-control small2" type="text" id="mobile" name="mobile" ngModel>
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Fax :</label>
+                                      <div class="col-sm-8">
+                                          <input class="form-control small2" type="text" id="fax" name="fax" ngModel>
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Affiliation :</label>
+                                      <div class="col-sm-8">
+                                          <input class="form-control small2" type="text" id="affiliation" name="affiliation" ngModel>
+                                      </div>
+                                  </div>
+  
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Street :</label>
+                                      <div class="col-sm-8">
+                                       <textarea class="form-control" rows="3" name="street" id="street" ngModel></textarea>
+                                          </div>
+                                      </div>
+                                       
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">City :</label>
+                                      <div class="col-sm-8" >
+                                         <input class="form-control small2" type="text" id="city" name="city" ngModel>
+                                      </div>    
+                                    </div>
+  
+                                    <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Country :</label>
+                                      <div class="col-sm-8">
+                                          <select class="form-control" id="country" name="country" ngModel>
+                                              <option *ngFor="let lang of country" [value]="lang">{{ lang }}</option>
+                                          </select>
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">State/Province :</label>
+                                      <div class="col-sm-8">
+                                        <select class="form-control" id="state" name="state" ngModel>
+                                            <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+                                        </select>
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Postal Code :</label>
+                                      <div class="col-sm-8" >
+                                         <input class="form-control small2" type="text" id="postalCode" name="postalCode" ngModel >
+                                      </div>    
+                                    </div>
+                              </div>
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <div class="form-group row">
+                          <div class="form-group row">
+                              <div class="col-sm-8 ml-sm-auto">
+                                      <button class="btn btn-info" type="submit">Submit</button>
+                                  </div>
+                          </div>
+                  </div>
+                                      
+    
+    </div>
+   </div>
+  </form>
+  
+            
+            
+  
+  
+  
+  

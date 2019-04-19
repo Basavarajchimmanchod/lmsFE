@@ -1,0 +1,176 @@
+<div class="page-heading">
+    <h1 class="page-title">Student Profile</h1>
+    <hr>
+    <!-- <p style="font-size: 10px">The Add User form can be used to create login information for a new employee. Fill in all required fields and any desired optional fields, then click Submit. [*] indicates a required field.</p><br> -->
+  
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html"><i class="la la-home font-20"></i></a>
+        </li>
+       <!-- <li class="breadcrumb-item">Add Course</li> -->
+    </ol>
+  </div>
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+    <div>
+          <!-- <form #CoursesForm="ngForm" (ngSubmit)="onSubmit(CoursesForm)"> -->
+  
+        <div class="col-md-6" width="auto">
+            <div class="ibox">
+              
+                <div class="ibox-head">
+                    
+                    <div class="ibox-title">Basic Information</div>
+                    <div class="ibox-tools">
+                        
+                        <a class="ibox-collapse" data-widget="collapse" ><i class="fa fa-minus"></i></a>
+                      <!--  <a class="fullscreen-link"><i class="fa fa-expand"></i></a> -->
+                    </div>
+                </div>
+                <div class="ibox-body" >
+                    <div class="form-group " align="right">
+                        <div class="col-sm-8 ml-sm-auto">
+                          <a routerLink="/student-Profile-Password">
+                                <button class="btn btn-default" type="submit">Change Password</button></a>
+                            </div>
+                    </div>
+                    <div class="form-horizontal">
+                        
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">* First Name :</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" required  id="userName" name="userName" >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">* Middle Name : </label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" required id="firstName" name="firstName"  >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">* Last Name :</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" id="lastName" name="lastName" >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small"> Institutional Role :</label>
+                            <div class="col-sm-8">
+                              <input class="form-control" type="text" id="lastName" name="lastName" >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label small"> System Role :</label>
+                          <div class="col-sm-8">
+                            <input class="form-control" type="text" id="lastName" name="lastName" >
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-4 col-form-label small"> Profile Image :</label>
+                        <div class="col-sm-8">
+                          <input class="form-control" type="text" id="lastName" name="lastName" >
+                        </div>
+                    </div>
+  
+                      
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label small">* User Name :</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" id="password" name="password"  >
+                            </div>
+                        </div>
+                       
+  
+                   </div>
+  
+                </div>
+            </div>
+        </div>
+  
+  <div class="col-md-6" >
+            <div class="ibox">
+                  <div class="form-horizontal">
+                        <div class="ibox">
+                            <div class="ibox-head">
+                                <div class="ibox-title">Contact Information</div>
+                                <div class="ibox-tools">
+                                    <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                                </div>
+                            </div>
+                            <div class="ibox-body" >
+                            
+                                   
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Email :</label>
+                                      <div class="col-sm-8">
+                                          <input class="form-control small2" type="text" id="mobile" name="mobile"  >
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Mobile No :</label>
+                                      <div class="col-sm-8">
+                                          <input class="form-control small2" type="text" id="Fax" name="Fax" >
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label class="col-sm-4 col-form-label small">Address :</label>
+                                      <div class="col-sm-8">
+                                          <input class="form-control small2" type="text" id="affiliation" name="affiliation" >
+                                      </div>
+                                  </div>
+                                
+                              </div>
+                              </div>
+                          </div>
+                      </div>
+             </div>
+  
+             <div class="col-md-6" >
+              <div class="ibox">
+                    <div class="form-horizontal">
+                          <div class="ibox">
+                              <div class="ibox-head">
+                                  <div class="ibox-title">Additional Information</div>
+                                  <div class="ibox-tools">
+                                      <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                                  </div>
+                              </div>
+                              <div class="ibox-body" >
+                              
+                                    
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label small">City :</label>
+                                        <div class="col-sm-8" >
+                                           <input class="form-control small2" type="text" id="city" name="city" >
+                                        </div>    
+                                      </div>
+    
+                                      <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label small">Country :</label>
+                                        <div class="col-sm-8">
+                                          <input class="form-control small2" type="text" id="city" name="city" >
+  
+                                          </div>
+                                    </div>
+                                   
+                                      <div class="form-group" align="right">
+                                          <div class="col-sm-8 ml-sm-auto">
+                                                  <button class="btn btn-info" type="submit">Save</button>
+                                              </div>
+                                      </div>
+  
+  
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+             </div>  
+   </div>
+  </form>
+  
+            
+            
+  
+  
+  
+  

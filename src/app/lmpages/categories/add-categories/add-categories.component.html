@@ -1,0 +1,217 @@
+<div class="page-heading">
+    <h1 class="page-title">Add Category</h1>
+    <p style="font-size:10px">
+          Use this form to Add a new resource category. Fill out the required information and click Submit. 
+        </p>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html"><i class="la la-home font-20"></i></a>
+        </li>
+       <!-- <li class="breadcrumb-item"></li>  -->
+    </ol>
+  </div>
+  
+  <div >
+    <form #CategoriesForm="ngForm" (ngSubmit)="onSubmit(CategoriesForm)">
+      <div class="col-md-6" width="auto">
+              
+          <div class="ibox">
+              <div class="ibox-head">
+                    
+                <div class="ibox-title">General Information</div>
+                <div class="ibox-tools">
+                    <a class="ibox-collapse" data-widget="collapse" ><i class="fa fa-minus"></i></a>
+                  <!--  <a class="fullscreen-link"><i class="fa fa-expand"></i></a> -->
+                </div>
+            </div>
+            <div class="ibox-body" > 
+                
+            <div class="form-group row">
+              <label class="col-sm-4 col-form-label small">Language : </label> 
+              <div class="col-sm-8">
+                
+                  <select class="form-control" id="language" name="language" ngModel>
+                      <option *ngFor="let lang of languages" [value]="lang">{{ lang }}</option>
+                  </select>
+                  </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-sm-4 col-form-label small">* LMS :</label>
+              <div class="col-sm-8">
+               <input class="form-control"   id="lms" name="lms" ngModel>  
+              </div>
+          </div>
+  
+  
+          <div class="form-group row" >
+              <label class="col-sm-4 col-form-label small">* Name : </label>
+              <div class="col-sm-8" >
+                  <input class="form-control" type="text" id="name" name="name" [ngModel]="categoriesValid.name" required minlength="3" maxlength="100" pattern="^[a-zA-Z0-9]*" #uname="ngModel"> 
+                  <div *ngIf="uname.errors && !isValidFormSubmitted" [ngClass] = "'error'"> 
+               <div *ngIf="(uname.dirty || uname.touched) && uname.errors.required"> 
+                 Categories name required.
+               </div>						
+               <div *ngIf="uname.errors.pattern"> 
+                Categories name Should Contains Only characters And Numbers.
+               </div>	
+               <div *ngIf="uname.errors.minlength"> 
+                Categories Name must be at least 3 characters long..
+                 </div>
+                 <div *ngIf="uname.errors.maxlength"> 
+                  Categories Name should be only 100 characters long..
+                   </div>
+               </div>
+              </div>
+          </div>
+  
+          <div class="form-group row">
+                  <label class="col-sm-4 col-form-label small"> Description :</label>
+                  <div class="col-sm-8">
+                    <textarea class="form-control" rows="3" id="description" name="description" ngModel></textarea>
+                  </div>
+              </div>
+  
+              <div class="form-group row" id="date_1">
+                      <label class="col-sm-4 col-form-label small">* Start Date : (MM/DD/YYYY)</label>
+                      <div class="col-sm-8">
+                          <div class="form-group date">
+                              <input class="form-control" type="date"  id="startDate" name="startDate" ngModel>
+                      </div>
+                  </div>
+                  </div>
+  
+                  <div class="form-group row" id="date_1">
+                          <label class="col-sm-4 col-form-label small">End Date : (MM/DD/YYYY)</label>
+                          <div class="col-sm-8">
+                              <div class="form-group date">
+                                  <input class="form-control" type="date"  id="endDate" name="endDate" ngModel>
+                              </div>
+                          </div>
+                      </div>
+  
+                      <div class="form-group row ">
+                        <label class="col-sm-4 col-form-label small">Searchable  :</label>
+                    <div class="col-sm-8 form-inline" >
+                                    <div class="radio" *ngFor="let option of isCategorySearchable">
+                                  <label >
+                                      <input type="radio" name="isCategorySearchable" id="isCategorySearchable" [value]="option" ngModel>{{ option }}
+                                  </label>      
+                                  </div>
+                      </div>
+                      </div>
+
+                      <div class="form-group row ">
+                        <label class="col-sm-4 col-form-label small">Status  :</label>
+                    <div class="col-sm-8 " >
+                                    <div class="radio" *ngFor="let option of status">
+                                  <label >
+                                      <input type="radio" name="status" id="status" [value]="option" ngModel>{{ option }}
+                                  </label>      
+                                  </div>
+                      </div>
+                      </div>
+
+                </div>
+          </div>
+          </div>
+          <div class="col-md-6" width="auto">
+             
+          <div class="ibox">
+            <div class="ibox-head">
+                <div class="ibox-title">Content </div>
+                <div class="ibox-tools">
+                    <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                </div> 
+            </div>
+            <div class="ibox-body" >
+            <div class="form-group row">
+              <div class="col-sm-8">
+                <table>
+                  <tr *ngFor="let contact of contacts;let i=index">
+                      <label *ngIf="contact==empty">No contact is selected</label>
+                      <td>
+                          <label class="col-sm-4 col-form-label" id="contact" Name="contact">{{ contact.contName }} </label></td>
+                      <td>
+                          <!-- <button class="btn-danger"type="button" > -->
+                          <i class="fa fa-times-circle"(click)="removeContent(contact)"></i>
+                      <!-- </button> -->
+                  </td>
+                  </tr>
+              </table>
+                    <br/>
+            
+                   <a style="color:skyblue" class="small3" data-toggle="modal" data-target=".bd-example-modal-xl">Choose Content</a>  
+                  <form >
+                       <!-- Button trigger modal -->
+  <!-- <button type="button" class="btn btn-primary">
+     Launch demo modal
+   </button> -->
+   
+   <!-- Modal -->
+   
+  <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-xl">
+       <div class="modal-content">
+             <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Choose Content</h5>
+                     
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                     </button>
+                   </div>
+                   <div class="modal-body">
+                        <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
+                                <thead>
+                                        <tr>
+                                            <th>Content Name</th>
+                                            <th>Type</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngFor="let content of contentss">
+            
+                                            <tr>
+                                                    <td> {{ content.name }} </td>
+                                                    <td> {{ content.type }}</td>
+                                                    <td>{{ content.status }} </td> 
+                                                   <td>
+                                                    <button type="button" class="btn-primary" (click)="onAdd(content.name)" data-dismiss="modal">Add</button>
+                                                              
+                                                   </td>
+                                                </tr>
+            
+                            </tbody>
+                            </table>
+                   </div>
+                   <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                   </div>
+       </div>
+     </div>
+   </div>   
+  </form>                       
+  </div>
+                    
+                       </div>
+                      </div>
+  
+               
+  
+            
+  
+  
+                                  <div class="form-group row">
+                                          <div class="form-group row">
+                                              <div class="col-sm-8 ml-sm-auto">
+                                                  <button class="btn btn-info" type="submit">Submit</button>
+                                              </div>
+                                          </div>
+                                  </div>
+  
+                                 
+    </div>
+  </div>
+  </form>
+  </div>

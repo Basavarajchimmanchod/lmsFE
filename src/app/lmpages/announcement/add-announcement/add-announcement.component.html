@@ -1,0 +1,109 @@
+<div class="page-heading">
+  <h1 class="page-title">Add Announcement</h1>
+  <!-- <p style="font-size:10px">
+        Use this form to Add a new resource category. Fill out the required information and click Submit. 
+      </p> -->
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+          <a href="index.html"><i class="la la-home font-20"></i></a>
+      </li>
+     <!-- <li class="breadcrumb-item"></li>  -->
+  </ol>
+</div>
+
+<div >
+  <form #announcementForm="ngForm" (ngSubmit)="onSubmit(announcementForm)">
+    <div class="col-md-8" width="auto">
+            
+        <div class="ibox">
+            <div class="ibox-head">
+                  
+              <div class="ibox-title">Add Announcement</div>
+              <div class="ibox-tools">
+                  <a class="ibox-collapse" data-widget="collapse" ><i class="fa fa-minus"></i></a>
+                <!--  <a class="fullscreen-link"><i class="fa fa-expand"></i></a> -->
+              </div>
+          </div>
+          <div class="ibox-body" > 
+              
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label small">Subject : </label> 
+            <div class="col-sm-8">
+              
+                <input type="text" class="form-control" id="subject" name="subject" ngModel>
+                   
+                </div>
+          </div>
+          <form #datachange="ngForm" >
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label small">User :</label>
+              <div class="col-sm-8 form-inline">
+                  <div class="col-sm-5">
+
+                <div class="form-group">
+                  <select class="form-control" multiple id="userName" name="userName" ngModel>
+                    <option *ngFor="let userN of user1;let i=index" [value]="userN">{{ userN }}</option>
+                </select>
+                   </div>
+                  </div>
+                   <div class="col-sm-1">
+                        <button (ngSubmit)="onGetID(datachange)">></button>
+                        <button ><</button>
+
+                   </div>
+                   <div class="col-sm-5">
+
+                      <div class="form-group">
+                        <select class="form-control" multiple id="userNs" name="userNs" ngModel>
+                          <option *ngFor="let userN2 of users2;let i of index" [value]="userN2">{{ userN2 }}</option>
+                      </select>
+                         </div>
+                </div>
+            </div>            
+        </div>
+</form>
+
+        <div class="form-group row" >
+            <label class="col-sm-4 col-form-label small">Description : </label>
+            <div class="col-sm-8" >
+              <textarea class="form-control" rows="3" id="discription" name="discription" ngModel></textarea>
+              <!-- <span *ngIf="name.invalid && (name.dirty || name.touched)">
+                    Name Should not be Empty
+                </span>  -->
+            </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label small">Add Attachment : </label>
+                  <div class="col-sm-8">
+                          <input class="form-control" type="file" placeholder="No File chosen" id="pic" name="pic" ngModel>
+                          </div>
+                      </div>
+
+             
+                      <div class="form-group row" >
+                        <label class="col-sm-4 col-form-label small">File Comment : </label>
+                        <div class="col-sm-8" >
+                          <textarea class="form-control" rows="3" id="discription" name="discription" ngModel></textarea>
+                          <!-- <span *ngIf="name.invalid && (name.dirty || name.touched)">
+                                Name Should not be Empty
+                            </span>  -->
+                        </div>
+                    </div>
+          
+
+
+                                <div class="form-group row">
+                                        <div class="form-group row">
+                                            <div class="col-sm-8 ml-sm-auto">
+                                                <button class="btn btn-info" type="submit">Submit</button>
+                                            </div>
+                                        </div>
+                                </div>
+
+                               
+  </div>
+</div>
+</div>
+</form>
+</div>

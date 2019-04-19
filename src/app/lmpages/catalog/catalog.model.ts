@@ -1,0 +1,52 @@
+import { MultiDataCont } from '../../Shared/multiDataCont';
+import { DataOrg } from '../../Shared/dataOrg';
+
+
+export class Catalog {
+     constructor(
+        public organizations:DataOrg[],
+         public code:string,
+         public name:string,
+         public tuition:number,
+         public description:string,
+         public targetedLearners:string,
+         public duration:string,
+         public major:string,
+         public deliveryMethod:string,
+         public approvalRequired:string,
+         public canRelaunch:string,
+         public contentType:string,
+        //  public resourceContent:string,
+         public selfCertifiedCompletion:string,
+         public courseCompletionCertificate:string,
+         public status:string,
+         public content:MultiDataCont[],
+         public language:string,
+         public notes:string,
+         public courseDisplayDate:string,
+         public enrollmentOpenDate:string,
+         public enrollmentCloseDate:string,
+         public courseHideDate:string,
+         public certificationCalculationDate:string,
+         public daysStdToCompl:number,
+         public daysBeforeStdToCompl:number,
+         public expireDays:Number,
+         public remindStudent:Number,
+         public enrollmentRestriction:string,
+        //  public enrollmentDays:number,
+         public accumulateCredit:string,
+         public credit:string,
+        //  public subscriptionProgram:string,
+        //  public nonSubscriptionCanEnroll:string,
+         public instructionalLanguages:string,
+         public version:string,
+         public allowUseOfInterestLists:string,
+         public createBy : string,
+         public createDate : string,
+         public modifiedBy : string,
+         public modifiedDate : string,
+         public deletedBy : string,
+         public deletedDate : string,
+     ){}
+ }
+ 

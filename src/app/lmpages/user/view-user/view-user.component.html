@@ -1,0 +1,49 @@
+<div class="page-heading">
+    <h1 class="page-title">View User</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html"><i class="la la-home font-20"></i></a>
+        </li>
+    </ol>
+  </div>
+  <div class="page-content fade-in-up">
+    <div class="ibox">
+        <div class="ibox-head">
+            <div class="ibox-title">View User</div>
+        </div>
+        <div class="ibox-body">
+            <table class="table table-striped table-bordered table-hover table-responsive" id="example-table" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                                <th>User Name</th>
+                                <th>Name</th>
+                                <th>System Role</th>
+                                <th> Institutional Role</th>
+                                <th> Action </th>
+
+                        </tr>
+                     
+              </thead>
+                        <tbody *ngFor="let users of userd; let i=index">
+  
+                                <tr>
+                                      <td> {{ users.userName }} </td>
+                                        <td> {{ users.firstName }}</td>
+                                        <td>{{ users.systemRoles }} </td> 
+                                        <td>{{ users.institutionalRoles }} </td> 
+
+                                       <td>
+                                        <button type="button"><a [routerLink]="['/edit-User',users.id]"><i class="ti-pencil-alt"></i></a></button>
+                                        <button type="button"><a [routerLink]="['/delete-User',users.id]"><i class="ti-trash"></i></a></button>
+                                        <button type="button"><a [routerLink]="['/view-User-Detail',users.id]"><i class="ti-list"></i></a></button>
+
+                                      </td>
+                                    </tr>
+                                   
+                </tbody>
+                </table>
+        </div>
+    </div>
+  </div>
+                       
+              
